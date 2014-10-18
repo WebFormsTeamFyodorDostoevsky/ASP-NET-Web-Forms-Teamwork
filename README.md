@@ -32,4 +32,4 @@ Your Web application should use the following technologies, frameworks and devel
 - Use at least one **file upload** form to send files at the server side (e.g. profile photos for your users)
 - Use GIT as **source control system**
 
-#### [Read more...]()
+#### [Read more...](https://github.com/WebFormsTeamFyodorDostoevsky/ASP-NET-Web-Forms-Teamwork/blob/master/Documentation/Assignment.md)
