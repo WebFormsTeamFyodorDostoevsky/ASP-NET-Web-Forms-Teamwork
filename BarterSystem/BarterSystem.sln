@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarterSystem.WebForms", "BarterSystem.WebForms\BarterSystem.WebForms.csproj", "{9DAAF40D-089B-4434-AA12-32FAAB90DC97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarterSystem.Data", "BarterSystem.Data\BarterSystem.Data.csproj", "{40B2F8F3-1C0E-4FE5-ABEA-2005423738BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarterSystem.ConsoleClient", "BarterSystem.ConsoleClient\BarterSystem.ConsoleClient.csproj", "{BFBE22E5-21DA-4744-B234-B740E979DD9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BarterSystem.Models", "BarterSystem.Models\BarterSystem.Models.csproj", "{21E0E2F9-C892-429F-8229-77AD4454A352}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9DAAF40D-089B-4434-AA12-32FAAB90DC97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DAAF40D-089B-4434-AA12-32FAAB90DC97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DAAF40D-089B-4434-AA12-32FAAB90DC97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DAAF40D-089B-4434-AA12-32FAAB90DC97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40B2F8F3-1C0E-4FE5-ABEA-2005423738BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40B2F8F3-1C0E-4FE5-ABEA-2005423738BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40B2F8F3-1C0E-4FE5-ABEA-2005423738BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40B2F8F3-1C0E-4FE5-ABEA-2005423738BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFBE22E5-21DA-4744-B234-B740E979DD9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFBE22E5-21DA-4744-B234-B740E979DD9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFBE22E5-21DA-4744-B234-B740E979DD9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFBE22E5-21DA-4744-B234-B740E979DD9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21E0E2F9-C892-429F-8229-77AD4454A352}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21E0E2F9-C892-429F-8229-77AD4454A352}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21E0E2F9-C892-429F-8229-77AD4454A352}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21E0E2F9-C892-429F-8229-77AD4454A352}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
