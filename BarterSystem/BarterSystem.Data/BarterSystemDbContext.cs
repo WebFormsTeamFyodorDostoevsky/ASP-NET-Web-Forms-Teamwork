@@ -1,17 +1,20 @@
 ﻿namespace BarterSystem.Data
 {
-    using Microsoft.AspNet.Identity.EntityFramework;
+    using System.Data.Entity;
+    
+    using BarterSystem.Data.Migrations;
+    using BarterSystem.Models;
 
-    //public class BarterSystemDbContext : IdentityDbContext<ApplicationUser>
-    //{
-    //    public BarterSystemDbContext()
-    //        : base("DefaultConnection", throwIfV1Schema: false)
-    //    {
-    //    }
+    public class BarterSystemDbContext : DbContext
+    {
+        public BarterSystemDbContext() 
+            : base("BarterSystemConnectionSQLExpress")
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<BarterSystemDbContext, Configuration>());
+        }
 
-    //    public static BarterSystemDbContext Create()
-    //    {
-    //        return new BarterSystemDbContext();
-    //    }
-    //}
+        public IDbSet<Category> Categories { get; set; }
+
+        public IDbSet<Advertisment> Advertisments { get; set; }
+    }
 }

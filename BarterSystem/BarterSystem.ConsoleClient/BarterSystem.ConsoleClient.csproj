@@ -61,6 +61,16 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BarterSystem.Data\BarterSystem.Data.csproj">
+      <Project>{40b2f8f3-1c0e-4fe5-abea-2005423738bf}</Project>
+      <Name>BarterSystem.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BarterSystem.Models\BarterSystem.Models.csproj">
+      <Project>{21e0e2f9-c892-429f-8229-77ad4454a352}</Project>
+      <Name>BarterSystem.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -2,6 +2,7 @@
 {
     public enum Status
     {
+        Unapproved,
         Available,
         AwaitingFeedback,
         Done

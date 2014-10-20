@@ -11,7 +11,7 @@ using BarterSystem.WebForms.Models;
 namespace BarterSystem.WebForms.Models
 {
      // You can add User data for the user by adding more properties to your User class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
-    public class ApplicationUser : IdentityUser
+    public class User : IdentityUser
     {
         public ClaimsIdentity GenerateUserIdentity(ApplicationUserManager manager)
         {
@@ -27,16 +27,16 @@ namespace BarterSystem.WebForms.Models
         }
     }
 
-    public class BarterSystemDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
-        public BarterSystemDbContext()
+        public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
-        public static BarterSystemDbContext Create()
+        public static ApplicationDbContext Create()
         {
-            return new BarterSystemDbContext();
+            return new ApplicationDbContext();
         }
     }
 }
@@ -49,7 +49,7 @@ namespace BarterSystem.WebForms
         // Used for XSRF when linking external logins
         public const string XsrfKey = "XsrfId";
 
-        public static void SignIn(ApplicationUserManager manager, ApplicationUser user, bool isPersistent)
+        public static void SignIn(ApplicationUserManager manager, User user, bool isPersistent)
         {
             IAuthenticationManager authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
             authenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
