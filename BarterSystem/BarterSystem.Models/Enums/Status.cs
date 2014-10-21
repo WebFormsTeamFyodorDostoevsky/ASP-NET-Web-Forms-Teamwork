@@ -5,6 +5,8 @@
         Unapproved,
         Available,
         AwaitingFeedback,
-        Done
+        Done,
+        Deleted,
+        Disaproved
     }
 }
