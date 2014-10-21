@@ -11,7 +11,10 @@ namespace BarterSystem.WebForms.Barter
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (this.User == null || !this.User.Identity.IsAuthenticated)
+            {
+                Server.Transfer("~/Account/Login.aspx", true);
+            }
         }
     }
 }
