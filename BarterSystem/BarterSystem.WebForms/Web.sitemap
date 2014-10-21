@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
+  <siteMapNode title="Home" description="Home Page" url="~/Default.aspx">
+    <siteMapNode title="Barters" description="Find, create and comment barters">
+      <siteMapNode title="Find" description="Search for a barter" url="~/Barter/Search.aspx"/>
+      <siteMapNode title="Create" description="Create new barter" url="~/Barter/Create.aspx"/>
+      <siteMapNode title="Comment" description="Comment finished barter" url="~/Barter/Comment.aspx"/>
+    </siteMapNode>
+    <siteMapNode title="User" description="User profile" url="~/Profile.aspx" />
+    <siteMapNode title="About" description="About Page" url="~/About.aspx" />
+    <siteMapNode title="Administration" description="Site administration">
+      <siteMapNode title="Categories" description="Administer categories" url="~/Administration/Categories.aspx"/>
+      <siteMapNode title="Users" description="Administer users" url="~/Administration/Users.aspx"/>
+      <siteMapNode title="Barters" description="Administer barters" url="~/Administration/Barters.aspx"/>
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

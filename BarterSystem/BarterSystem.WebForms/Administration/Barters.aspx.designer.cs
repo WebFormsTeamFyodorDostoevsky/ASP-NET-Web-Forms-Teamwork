@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BarterSystem.WebForms
+namespace BarterSystem.WebForms.Administration
 {
 
 
-    public partial class Contact
+    public partial class Barters
     {
     }
 }
