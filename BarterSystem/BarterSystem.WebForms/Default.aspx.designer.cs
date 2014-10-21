@@ -11,5 +11,32 @@ namespace BarterSystem.WebForms {
     
     
     public partial class _Default {
+        
+        /// <summary>
+        /// TotalUsers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal TotalUsers;
+        
+        /// <summary>
+        /// TotalBarters control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal TotalBarters;
+        
+        /// <summary>
+        /// TotalCategories control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal TotalCategories;
     }
 }
