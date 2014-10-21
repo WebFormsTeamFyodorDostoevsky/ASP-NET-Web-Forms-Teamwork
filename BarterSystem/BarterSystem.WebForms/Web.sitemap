@@ -3,7 +3,7 @@
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0">
   <siteMapNode title="Home" description="Home Page" url="~/Default.aspx">
     <siteMapNode title="Barters" description="Find, create and comment barters" roles="user,admin">
-      <siteMapNode title="Find" description="Search for a barter" url="~/Barter/Search.aspx"/>
+      <siteMapNode title="Search" description="Search for a barter" url="~/Barter/Search.aspx"/>
       <siteMapNode title="Create" description="Create new barter" url="~/Barter/Create.aspx"/>
       <siteMapNode title="Comment" description="Comment finished barter" url="~/Barter/Comment.aspx"/>
     </siteMapNode>
