@@ -170,8 +170,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Controls\Notifier\css\bootstrap.css" />
-    <Content Include="Controls\Notifier\css\bootstrap.min.css" />
+    <Content Include="Controls\Notifier\css\notifier.css" />
+    <Content Include="Controls\Notifier\js\jquery-2.1.1.min.js" />
     <Content Include="Controls\Notifier\js\notifier.js" />
     <Content Include="Controls\Notifier\Notifier.ascx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

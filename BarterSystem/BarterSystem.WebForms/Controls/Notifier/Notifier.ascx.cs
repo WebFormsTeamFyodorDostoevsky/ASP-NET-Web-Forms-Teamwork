@@ -110,7 +110,7 @@
                 {
                     var msgPanel = new Panel
                     {
-                        CssClass = "PanelNotificationBox alert alert-" + msg.Type.ToString().ToLower()
+                        CssClass = "pull-right col-xs-4 col-md-4 alert alert-" + msg.Type.ToString().ToLower()
                     };
                     if (msg.AutoHide)
                     {
@@ -146,20 +146,19 @@
             }
         }
 
-        /* public void ShowToastr(string message, string title, string type = "info")
-         {
-             this.Page.ClientScript.RegisterStartupScript(
-                 this.Page.GetType(),
-                 "toastr_message",
-                 string.Format("toastr.{0}('{1}', '{2}');", type.ToLower(), message, title),
-                 addScriptTags: true);
-         }*/
-
         private void IncludeCssAndJs()
         {
             ClientScriptManager cs = this.Page.ClientScript;
 
-            // Include the ErrorSuccessNotifier.js library (if not already included)
+            // Include the jquery library (if not already included)
+            string jqueryScriptUrl = this.TemplateSourceDirectory +
+                "/js/jquery-2.1.1.min.js";
+            if (!cs.IsStartupScriptRegistered(jqueryScriptUrl))
+            {
+                cs.RegisterClientScriptInclude(jqueryScriptUrl, jqueryScriptUrl);
+            }
+
+            // Include the notifier.js library (if not already included)
             string notifierScriptUrl = this.TemplateSourceDirectory +
                 "/js/notifier.js";
             if (!cs.IsStartupScriptRegistered(notifierScriptUrl))
@@ -168,7 +167,7 @@
             }
 
             // Include the bootstrap.css stylesheet (if not already included)
-            string cssRelativeUrl = this.TemplateSourceDirectory +
+         /*   string cssRelativeUrl = this.TemplateSourceDirectory +
                 "/css/bootstrap.css";
             if (!cs.IsClientScriptBlockRegistered(cssRelativeUrl))
             {
@@ -176,7 +175,7 @@
                     @"<link href='{0}' rel='stylesheet' type='text/css' />",
                     cssRelativeUrl);
                 cs.RegisterClientScriptBlock(this.GetType(), cssRelativeUrl, cssLinkCode);
-            }
+            }*/
         }
     }
 }

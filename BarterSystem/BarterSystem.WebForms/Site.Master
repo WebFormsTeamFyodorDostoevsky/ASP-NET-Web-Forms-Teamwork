@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="BarterSystem.WebForms.SiteMaster" %>
 
+<%@ Register src="Controls/Notifier/Notifier.ascx" tagname="Notifier" tagprefix="uc1" %>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -38,6 +40,7 @@
                 <asp:ScriptReference Path="~/Scripts/menu.js" />
             </Scripts>
         </asp:ScriptManager>
+        <uc1:Notifier ID="Notifier1" runat="server" />
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="header">
