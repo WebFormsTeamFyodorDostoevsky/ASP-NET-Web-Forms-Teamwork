@@ -54,6 +54,8 @@
   <ItemGroup>
     <Compile Include="Advertisment.cs" />
     <Compile Include="Category.cs" />
+    <Compile Include="Comment.cs" />
+    <Compile Include="Enums\Feedback.cs" />
     <Compile Include="Enums\Status.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />
