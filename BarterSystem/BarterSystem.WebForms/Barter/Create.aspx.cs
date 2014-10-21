@@ -8,17 +8,12 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using BarterSystem.Models.Enums;
+using BarterSystem.WebForms.Controls.Notifier;
 
 namespace BarterSystem.WebForms.Barter
 {
     public partial class Create : System.Web.UI.Page
     {
-        protected string SuccessMessage
-        {
-            get;
-            private set;
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (this.User == null || !this.User.Identity.IsAuthenticated)
@@ -47,13 +42,12 @@ namespace BarterSystem.WebForms.Barter
                 newAd.Status = Status.Unapproved;
                 uow.Advertisments.Add(newAd);
                 uow.SaveChanges();
+                Notifier.Success("Barter offer successfully created");
                 Server.Transfer("~/Barter/Create.aspx", false);
-                this.SuccessMessage = "Barter offer successfully created";
-                successMessage.Visible = !String.IsNullOrEmpty(SuccessMessage);
             } 
             catch(Exception er)
             {
-                ErrorMessage.Text = er.Message;
+                Notifier.Error(er.Message);
             }
         }
     }

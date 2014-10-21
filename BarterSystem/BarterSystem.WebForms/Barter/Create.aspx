@@ -10,11 +10,6 @@
     <p class="text-danger">
         <asp:Literal runat="server" ID="ErrorMessage" />
     </p>
-    <div>
-        <asp:PlaceHolder runat="server" ID="successMessage" Visible="false" ViewStateMode="Disabled">
-            <p class="text-success"><%: SuccessMessage %></p>
-        </asp:PlaceHolder>
-    </div>
     <div class="form-horizontal">
         <h4>Create a new barter offer</h4>
         <hr />
