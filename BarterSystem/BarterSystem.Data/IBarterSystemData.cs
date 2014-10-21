@@ -9,7 +9,7 @@
 
         IRepository<Advertisment> Advertisments { get; }
 
-        //// IRepository<User> Users { get; }
+        IRepository<User> Users { get; }
 
         int SaveChanges();
     }

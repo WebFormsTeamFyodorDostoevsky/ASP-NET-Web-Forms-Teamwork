@@ -39,13 +39,13 @@
             }
         }
 
-        //// public IRepository<User> Users
-        //// {
-        ////     get
-        ////     {
-        ////         return this.GetRepository<User>();
-        ////     }
-        //// }
+         public IRepository<User> Users
+         {
+             get
+             {
+                 return this.GetRepository<User>();
+             }
+         }
 
         public int SaveChanges()
         {
