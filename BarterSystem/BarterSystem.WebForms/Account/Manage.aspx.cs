@@ -5,6 +5,7 @@
     using System.Web;
     using System.Web.UI.WebControls;
 
+    using BarterSystem.Common;
     using BarterSystem.Data;
     using BarterSystem.WebForms.Controls.Notifier;
 
@@ -87,7 +88,7 @@
                     .Select(u => new { u.Id, u.FirstName, u.LastName, u.AvatarUrl, u.Skills, u.Rating })
                     .First(u => u.Id == userId);
 
-            this.Avatar.ImageUrl = "~/Imgs/" + user.AvatarUrl;
+            this.Avatar.ImageUrl = GlobalConstants.ImagesPath + user.AvatarUrl;
             this.Skills.DataSource = uow.Categories.All().Select(c => c.Name).ToList();
             this.Page.DataBind();
 
