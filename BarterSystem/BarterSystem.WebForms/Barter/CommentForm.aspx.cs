@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.AspNet.Identity;
+using BarterSystem.WebForms.Controls.Notifier;
 
 namespace BarterSystem.WebForms.Barter
 {
@@ -24,8 +26,30 @@ namespace BarterSystem.WebForms.Barter
             var barterId = int.Parse(Request.QueryString["id"]);
             var uow = new BarterSystemData();
             var commentedBarter = uow.Advertisments.Find(barterId);
-            commentedBarter.Status = Status.Done;
+
+            if (commentedBarter.AcceptUserId == this.User.Identity.GetUserId())
+            {
+                commentedBarter.CommentedByAcceptUser = true;
+            }
+            else
+            {
+                commentedBarter.CommentedByUser = true;
+            }
+
+            if (commentedBarter.CommentedByUser && commentedBarter.CommentedByAcceptUser)
+            {
+                commentedBarter.Status = Status.Done;
+            }
+
+            var comment = new BarterSystem.Models.Comment();
+            comment.Feedback = (Feedback) Enum.Parse(typeof(Feedback), this.FeedbackType.Text);
+            comment.Content = this.Content.Text;
+            comment.UserId = this.User.Identity.GetUserId();
+            uow.Comments.Add(comment);
             uow.SaveChanges();
+
+            Notifier.Success("Barter offer successfully commented");
+            Server.Transfer("~/Barter/Comment.aspx", true);
         }
     }
 }

@@ -1,20 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Barters.aspx.cs" Inherits="BarterSystem.WebForms.Administration.Barters" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h3>Here are the barters</h3>
+    <h3>All offered barters</h3>
     <asp:ListView ID="AdminBarterVL" runat="server"
         DataSourceID="BarterODS"
         DataKeyNames="Id"
         OnItemCommand="ListView1_ItemCommand">
         <AlternatingItemTemplate>
-            <tr style="">
+            <tr>
                 <td>
-                    <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
-                    <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
-                    <asp:Button ID="ApproveButton" runat="server" CommandName="Approve"
-                         Text="Approve" CommandArgument='<%# Eval("Id") %>' />
-                    <asp:Button ID="Disapprove" runat="server"  CommandName="Disapprove" 
-                        Text="Disapprove" CommandArgument='<%# Eval("Id") %>' />
+                    <asp:Button ID="DeleteButton" CssClass="btn btn-primary btn-xs" runat="server" CommandName="Delete" Text="Delete" />
+                    <asp:Button ID="EditButton" CssClass="btn btn-primary btn-xs" runat="server" CommandName="Edit" Text="Edit" />
+                    <asp:Button ID="ApproveButton" CssClass="btn btn-success btn-xs" runat="server" CommandName="Approve" Text="Approve" CommandArgument='<%# Eval("Id") %>' />
+                    <asp:Button ID="Disapprove" CssClass="btn btn-danger btn-xs" runat="server"  CommandName="Disapprove" Text="Reject" CommandArgument='<%# Eval("Id") %>' />
                 </td>
                 <td>
                     <asp:Label ID="UserNameLabel" runat="server" Text='<%# Eval("UserName") %>' />
@@ -37,10 +35,10 @@
             </tr>
         </AlternatingItemTemplate>
         <EditItemTemplate>
-            <tr style="">
+            <tr>
                 <td>
-                    <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
-                    <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
+                    <asp:Button ID="UpdateButton"  CssClass="btn btn-primary btn-xs" runat="server" CommandName="Update" Text="Update" />
+                    <asp:Button ID="CancelButton"  CssClass="btn btn-primary btn-xs" runat="server" CommandName="Cancel" Text="Cancel" />
                 </td>
                 <td>
                     <asp:TextBox ID="UserNameTextBox" runat="server" Text='<%# Bind("UserName") %>' />
@@ -63,17 +61,17 @@
             </tr>
         </EditItemTemplate>
         <EmptyDataTemplate>
-            <table runat="server" style="">
+            <table runat="server" class="table table-striped table-hover">
                 <tr>
                     <td>No data was returned.</td>
                 </tr>
             </table>
         </EmptyDataTemplate>
         <InsertItemTemplate>
-            <tr style="">
+            <tr>
                 <td>
-                    <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
-                    <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
+                    <asp:Button ID="InsertButton"  CssClass="btn btn-primary btn-xs" runat="server" CommandName="Insert" Text="Insert" />
+                    <asp:Button ID="CancelButton"  CssClass="btn btn-primary btn-xs" runat="server" CommandName="Cancel" Text="Clear" />
                 </td>
                 <td>
                     <asp:TextBox ID="UserNameTextBox" runat="server" Text='<%# Bind("UserName") %>' />
@@ -98,12 +96,12 @@
         <ItemTemplate>
             <tr style="">
                 <td>
-                    <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
-                    <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
-                    <asp:Button ID="ApproveButton" runat="server" CommandName="Approve"
+                    <asp:Button ID="DeleteButton" runat="server" CssClass="btn btn-primary btn-xs" CommandName="Delete" Text="Delete" />
+                    <asp:Button ID="EditButton" runat="server" CssClass="btn btn-primary btn-xs" CommandName="Edit" Text="Edit" />
+                    <asp:Button ID="ApproveButton" runat="server" CssClass="btn btn-success btn-xs" CommandName="Approve"
                          Text="Approve" CommandArgument='<%# Eval("Id") %>' />
-                    <asp:Button ID="Disapprove" runat="server"  CommandName="Disapprove" 
-                        Text="Disapprove" CommandArgument='<%# Eval("Id") %>' />
+                    <asp:Button ID="Disapprove" runat="server" CssClass="btn btn-danger btn-xs" CommandName="Disapprove" 
+                        Text="Reject" CommandArgument='<%# Eval("Id") %>' />
                 </td>
                 <td>
                     <asp:Label ID="UserNameLabel" runat="server" Text='<%# Eval("UserName") %>' />
@@ -129,7 +127,7 @@
             <table runat="server">
                 <tr runat="server">
                     <td runat="server">
-                        <table id="itemPlaceholderContainer" runat="server" border="0" style="">
+                        <table id="itemPlaceholderContainer" runat="server"  class="table table-striped table-hover ">
                             <tr runat="server" style="">
                                 <th runat="server"></th>
                                 <th runat="server"><asp:LinkButton ID="SortByName" runat="server"
@@ -151,10 +149,10 @@
                     </td>
                 </tr>
                 <tr runat="server">
-                    <td runat="server" style="">
-                        <asp:DataPager ID="DataPager1" runat="server" PageSize="3" >
+                    <td runat="server" style="text-align: center;">
+                        <asp:DataPager ID="DataPager1" runat="server">
                             <Fields>
-                                <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
+                                <asp:NextPreviousPagerField ButtonType="Button" ButtonCssClass="btn btn-primary btn-sm" ShowFirstPageButton="True" ShowLastPageButton="True" />
                             </Fields>
                         </asp:DataPager>
                     </td>

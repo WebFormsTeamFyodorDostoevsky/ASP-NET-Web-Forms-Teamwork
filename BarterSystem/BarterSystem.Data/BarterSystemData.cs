@@ -39,6 +39,14 @@
             }
         }
 
+        public IRepository<Comment> Comments
+        {
+            get
+            {
+                return this.GetRepository<Comment>();
+            }
+        }
+
          public IRepository<User> Users
          {
              get

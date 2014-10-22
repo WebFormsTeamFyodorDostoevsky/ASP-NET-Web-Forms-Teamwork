@@ -15,21 +15,23 @@
 
         public string UserId { get; set; }
 
-        public User User { get; set; }
+        public virtual User User { get; set; }
 
         public bool CommentedByUser { get; set; }
 
         public string AcceptUserId { get; set; }
 
-        public User AcceptUser { get; set; }
+        public virtual User AcceptUser { get; set; }
 
         public bool CommentedByAcceptUser { get; set; }
 
         public int CategoryId { get; set; }
 
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
 
         [Required]
         public Status Status { get; set; }
+
+        public string ImageUrl { get; set; }
     }
 }

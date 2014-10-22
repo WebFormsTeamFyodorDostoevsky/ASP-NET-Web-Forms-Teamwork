@@ -7,37 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BarterSystem.WebForms.Barter {
+namespace BarterSystem.WebForms.Account {
     
     
-    public partial class Create {
+    public partial class ChangeAvatar {
         
         /// <summary>
-        /// ErrorMessage control.
+        /// Avatar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ErrorMessage;
+        protected global::System.Web.UI.WebControls.Image Avatar;
         
         /// <summary>
-        /// TitleAd control.
+        /// FileUploadAvatar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TitleAd;
-        
-        /// <summary>
-        /// FileUploadImage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUploadImage;
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadAvatar;
         
         /// <summary>
         /// RevImg control.
@@ -49,21 +40,12 @@ namespace BarterSystem.WebForms.Barter {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RevImg;
         
         /// <summary>
-        /// Content control.
+        /// ButtonUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Content;
-        
-        /// <summary>
-        /// Category control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Category;
+        protected global::System.Web.UI.WebControls.Button ButtonUpload;
     }
 }

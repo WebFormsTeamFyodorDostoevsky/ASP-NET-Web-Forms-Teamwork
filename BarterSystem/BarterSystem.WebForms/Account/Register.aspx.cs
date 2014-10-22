@@ -11,6 +11,7 @@ namespace BarterSystem.WebForms.Account
 {
     using System.Web.Security;
 
+    using BarterSystem.Common;
     using BarterSystem.WebForms.Controls.Notifier;
 
     public partial class Register : Page
@@ -25,7 +26,7 @@ namespace BarterSystem.WebForms.Account
                                FirstName = this.FirstName.Text,
                                LastName = this.LastName.Text,
                                Rating = 0,
-                               AvatarUrl = "default-avatar.jpg"
+                               AvatarUrl = GlobalConstants.DefaultUserAvatar
                            };
             IdentityResult result = manager.Create(user, this.Password.Text);
             if (result.Succeeded)

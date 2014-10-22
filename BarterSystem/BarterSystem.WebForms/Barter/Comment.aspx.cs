@@ -23,9 +23,9 @@ namespace BarterSystem.WebForms.Barter
             var uow = new BarterSystemData();
             var userId = this.User.Identity.GetUserId();
             var username = this.User.Identity.GetUserName();
-            this.BartersItemsRepeater.DataSource = uow.Advertisments
+            this.ListViewBarters.DataSource = uow.Advertisments
                 .All()
-                .Where(a => (a.AcceptUserId == userId && !a.CommentedByAcceptUser) || (a.UserId == userId && !a.CommentedByUser))
+                .Where(a => (a.AcceptUserId == userId && !a.CommentedByAcceptUser) || (a.UserId == userId && !a.CommentedByUser) && a.Status == Status.AwaitingFeedback)
                 .Select(a => new BarterViewModel() { UserName = username, Content = a.Content, Title = a.Title, Id = a.Id })
                 .ToList();
             Page.DataBind();

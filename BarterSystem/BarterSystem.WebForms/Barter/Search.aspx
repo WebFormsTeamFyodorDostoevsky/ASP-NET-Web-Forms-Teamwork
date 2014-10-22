@@ -1,4 +1,48 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Search.aspx.cs" Inherits="BarterSystem.WebForms.Barter.Search" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h3>Here you can search and filter all the barters</h3>
+    <asp:ListView ID="DisplayBarters" 
+                  runat="server"
+                  ItemType="BarterSystem.WebForms.Models.AdvertismentViewModel" 
+                  DataKeyNames="Id"
+                  SelectMethod="DisplayBarters_GetData"
+                  UpdateMethod="DisplayBarters_UpdateData"
+                  ItemPlaceholderID="itemPlaceholder">
+        <LayoutTemplate>
+            <table runat="server" id="View" class="table table-striped table-hover ">
+                <tr runat="server">
+                    <th runat="server">
+                        <asp:LinkButton runat="server" ID="SortByTitle" CommandName="Sort" CommandArgument="Title">Title</asp:LinkButton>
+                    </th>
+                    <th runat="server">
+                        <asp:LinkButton runat="server" ID="SortByCategory" CommandName="Sort" CommandArgument="CategoryName">Category</asp:LinkButton>
+                    </th>
+                    <th runat="server">Accept Offer</th>
+                </tr>
+                <tr runat="server" ID="itemPlaceholder">
+                </tr>
+            </table>
+            <div>
+                <asp:DataPager ID="DataPagerAdvertisments" runat="server" PageSize="5">
+                    <Fields>
+                        <asp:NextPreviousPagerField ShowFirstPageButton="True" 
+                                                    ShowNextPageButton="False" ShowPreviousPageButton="False" ButtonCssClass="btn btn-default" />
+                        <asp:NumericPagerField CurrentPageLabelCssClass="btn btn-default" NextPreviousButtonCssClass="btn btn-default" NumericButtonCssClass ="btn btn-default" />
+                        <asp:NextPreviousPagerField ShowLastPageButton="True" 
+                                                    ShowNextPageButton="False" ShowPreviousPageButton="False" ButtonCssClass="btn btn-default" />
+                    </Fields>
+                </asp:DataPager>
+            </div>
+        </LayoutTemplate>
+        <ItemTemplate>
+            <tr>
+                <td><%#: Item.Title %></td>
+                <td><%#: Item.CategoryName %></td>
+                <td>
+                    <input type="button" class="btn btn-success" value="Accept"/>
+                </td>
+            </tr>
+        </ItemTemplate>
+    </asp:ListView>
 </asp:Content>
+

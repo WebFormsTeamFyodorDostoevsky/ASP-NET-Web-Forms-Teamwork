@@ -147,6 +147,7 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="Account\AddPhoneNumber.aspx" />
+    <Content Include="Account\ChangeAvatar.aspx" />
     <Content Include="Account\Confirm.aspx" />
     <Content Include="Account\Forgot.aspx" />
     <Content Include="Account\Lockout.aspx" />
@@ -242,6 +243,13 @@
     </Compile>
     <Compile Include="Account\AddPhoneNumber.aspx.designer.cs">
       <DependentUpon>AddPhoneNumber.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangeAvatar.aspx.cs">
+      <DependentUpon>ChangeAvatar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangeAvatar.aspx.designer.cs">
+      <DependentUpon>ChangeAvatar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Confirm.aspx.cs">
       <DependentUpon>Confirm.aspx</DependentUpon>
@@ -418,6 +426,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdvertismentViewModel.cs" />
     <Compile Include="Models\BarterViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\UserViewModel.cs" />
@@ -456,6 +465,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BarterSystem.Common\BarterSystem.Common.csproj">
+      <Project>{39E4AEEA-91F9-4A94-8001-17D670A25148}</Project>
+      <Name>BarterSystem.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BarterSystem.Data\BarterSystem.Data.csproj">
       <Project>{40b2f8f3-1c0e-4fe5-abea-2005423738bf}</Project>
       <Name>BarterSystem.Data</Name>
