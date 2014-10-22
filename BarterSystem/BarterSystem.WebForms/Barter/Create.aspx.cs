@@ -42,6 +42,7 @@ namespace BarterSystem.WebForms.Barter
                 newAd.CategoryId = uow.Categories.All().FirstOrDefault(c => c.Name == this.Category.SelectedValue).Id;
                 newAd.UserId = this.User.Identity.GetUserId();
                 newAd.Status = Status.Unapproved;
+                newAd.CreationDate = DateTime.Now;
                 newAd.CommentedByUser = false;
                 newAd.CommentedByAcceptUser = false;
 
@@ -70,11 +71,14 @@ namespace BarterSystem.WebForms.Barter
                 uow.Advertisments.Add(newAd);
                 uow.SaveChanges();
                 Notifier.Success("Barter offer successfully created");
-                Server.Transfer("~/Barter/Create.aspx", false);
+                Response.Redirect("~/Barter/Create.aspx");
             } 
             catch(Exception er)
             {
-                Notifier.Error(er.Message);
+                if(er.Message != "Thread was being aborted.")
+                {
+                    Notifier.Error(er.Message);
+                }
             }
         }
     }

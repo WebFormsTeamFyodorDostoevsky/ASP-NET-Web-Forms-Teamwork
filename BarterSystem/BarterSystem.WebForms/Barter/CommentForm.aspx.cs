@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using BarterSystem.WebForms.Controls.Notifier;
+using BarterSystem.Common;
 
 namespace BarterSystem.WebForms.Barter
 {
@@ -18,6 +19,12 @@ namespace BarterSystem.WebForms.Barter
             var itemNames = System.Enum.GetNames(typeof(BarterSystem.Models.Enums.Feedback));
             var sorted = itemNames.ToList().OrderByDescending(a => a);
             this.FeedbackType.DataSource = sorted;
+            var barterId = int.Parse(Request.QueryString["id"]);
+            var uow = new BarterSystemData();
+            var commentedBarter = uow.Advertisments.Find(barterId);
+            this.BarterTitle.Text = commentedBarter.Title;
+            this.BarterAuthor.Text = commentedBarter.User.UserName;
+            this.Photo.ImageUrl = GlobalConstants.ImagesPath + commentedBarter.ImageUrl;
             Page.DataBind();
         }
 
@@ -45,6 +52,7 @@ namespace BarterSystem.WebForms.Barter
             comment.Feedback = (Feedback) Enum.Parse(typeof(Feedback), this.FeedbackType.Text);
             comment.Content = this.Content.Text;
             comment.UserId = this.User.Identity.GetUserId();
+            
             uow.Comments.Add(comment);
             uow.SaveChanges();
 

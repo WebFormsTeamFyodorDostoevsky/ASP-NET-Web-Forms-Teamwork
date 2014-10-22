@@ -23,10 +23,30 @@
         }
 
         //TO DO: Make this efficient
-        public ICollection<BarterViewModel> GetBarters()
+        public ICollection<BarterViewModel> GetBarters(string OrderBy, int ObjectsPerPage, int StartIndex)
         {
-            return data.Advertisments.All()
-                .Where(x => x.Status != Status.Deleted)
+            IQueryable<Advertisment> sortedData;
+            bool isDesc = false;
+            if (OrderBy.EndsWith("DESC"))
+            {
+                isDesc = true;
+                OrderBy = OrderBy.Substring(0, OrderBy.Length - 5);
+            }
+            switch (OrderBy)
+            {
+                case "Id": sortedData = data.Advertisments.All().OrderBy(x => x.Id); break;
+                case "Title": sortedData = data.Advertisments.All().OrderBy(x => x.Title); break;
+                case "Content": sortedData = data.Advertisments.All().OrderBy(x => x.Content); break;
+                case "Category": sortedData = data.Advertisments.All().OrderBy(x => x.Category.Name); break;
+                case "Status": sortedData = data.Advertisments.All().OrderBy(x => x.Status.ToString()); break;
+                default:
+                    sortedData = data.Advertisments.All();
+                    break;
+            }
+
+            var selectedStortedData = sortedData.Where(x => x.Status != Status.Deleted)
+                //.Skip(StartIndex)
+                //.Take(GetCount)
                 .Select(x => new BarterViewModel()
                 {
                     CategoryId = x.Category.Id,
@@ -35,7 +55,12 @@
                     Status = x.Status,
                     UserName = x.User.UserName,
                     Id = x.Id
-                }).ToList();
+                });
+            if (isDesc)
+            {
+                //selectedStortedData = selectedStortedData.Reverse();
+            }
+            return selectedStortedData.ToList();
         }
 
         public void UpdateObject(BarterViewModel barterData)
@@ -63,7 +88,7 @@
         }
         public void DeleteObject(BarterViewModel barterData)
         {
-            
+
             var barter = data.Advertisments.Find(barterData.Id);
             barter.Status = Status.Deleted;
             data.SaveChanges();
