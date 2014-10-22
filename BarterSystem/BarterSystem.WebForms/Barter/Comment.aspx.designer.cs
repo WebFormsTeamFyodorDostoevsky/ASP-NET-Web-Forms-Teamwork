@@ -13,12 +13,21 @@ namespace BarterSystem.WebForms.Barter {
     public partial class Comment {
         
         /// <summary>
-        /// BartersItemsRepeater control.
+        /// ListViewBarters control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater BartersItemsRepeater;
+        protected global::System.Web.UI.WebControls.ListView ListViewBarters;
+        
+        /// <summary>
+        /// DataPagerBarters control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataPager DataPagerBarters;
     }
 }

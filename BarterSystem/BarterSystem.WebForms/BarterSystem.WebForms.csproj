@@ -426,6 +426,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AdvertismentViewModel.cs" />
     <Compile Include="Models\BarterViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\UserViewModel.cs" />
