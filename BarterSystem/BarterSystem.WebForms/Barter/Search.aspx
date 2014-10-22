@@ -2,21 +2,21 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h3>Here you can search and filter all the barters</h3>
     <asp:ListView ID="DisplayBarters" 
-        runat="server"
-        ItemType="BarterSystem.Models.Advertisment" 
-        DataKeyNames="Id"
-        SelectMethod="DisplayBarters_GetData"
-        UpdateMethod="DisplayBarters_UpdateData"
-        DeleteMethod="DisplayBarters_DeleteData"
-        AllowPaging="True"
-        AllowSorting="True"
-        PageSize="10"
-        ItemPlaceholderID="itemPlaceholder">
+                  runat="server"
+                  ItemType="BarterSystem.WebForms.Models.AdvertismentViewModel" 
+                  DataKeyNames="Id"
+                  SelectMethod="DisplayBarters_GetData"
+                  UpdateMethod="DisplayBarters_UpdateData"
+                  ItemPlaceholderID="itemPlaceholder">
         <LayoutTemplate>
             <table runat="server" id="View" class="table table-striped table-hover ">
                 <tr runat="server">
-                    <th runat="server">Title</th>
-                    <th runat="server">Category</th>
+                    <th runat="server">
+                        <asp:LinkButton runat="server" ID="SortByTitle" CommandName="Sort" CommandArgument="Title">Title</asp:LinkButton>
+                    </th>
+                    <th runat="server">
+                        <asp:LinkButton runat="server" ID="SortByCategory" CommandName="Sort" CommandArgument="CategoryName">Category</asp:LinkButton>
+                    </th>
                     <th runat="server">Accept Offer</th>
                 </tr>
                 <tr runat="server" ID="itemPlaceholder">
@@ -37,8 +37,10 @@
         <ItemTemplate>
             <tr>
                 <td><%#: Item.Title %></td>
-                <td><%#: Item.Category.Name %></td>
-                <td><input type="button" class="btn btn-success" value="Accept"/></td>
+                <td><%#: Item.CategoryName %></td>
+                <td>
+                    <input type="button" class="btn btn-success" value="Accept"/>
+                </td>
             </tr>
         </ItemTemplate>
     </asp:ListView>

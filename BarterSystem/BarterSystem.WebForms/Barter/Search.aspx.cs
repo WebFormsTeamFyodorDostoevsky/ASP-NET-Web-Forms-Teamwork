@@ -5,10 +5,12 @@
     using System.Web.UI;
     using System.Data.Entity;
     using BarterSystem.Data;
+    using BarterSystem.WebForms.Models;
 
     public partial class Search : Page
     {
         BarterSystemData uow = new BarterSystemData();
+        IQueryable<BarterSystem.WebForms.Models.AdvertismentViewModel> ads;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,9 +26,9 @@
         //     int startRowIndex
         //     out int totalRowCount
         //     string sortByExpression
-        public IQueryable<BarterSystem.Models.Advertisment> DisplayBarters_GetData()
+        public IQueryable<BarterSystem.WebForms.Models.AdvertismentViewModel> DisplayBarters_GetData()
         {
-            var ads = uow.Advertisments.All().Include("Category");
+            ads = uow.Advertisments.All().Select(AdvertismentViewModel.FromAdvertisment);
             return ads;
         }
     }
