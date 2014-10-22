@@ -6,11 +6,12 @@
                 <h3>Comment your finished barters.</h3>
                 <asp:PlaceHolder runat="server" ID="itemPlaceholder"></asp:PlaceHolder>
             </LayoutTemplate>
-
+            <EmptyDataTemplate>
+                No barters for comment.
+            </EmptyDataTemplate>
             <ItemSeparatorTemplate>
                 <hr />
             </ItemSeparatorTemplate>
-
             <ItemTemplate>
                 <div class="row">
                     <div class="col-md-2">
@@ -18,7 +19,7 @@
                         </div>
                     <div class="col-md-9">
                     <h4><%#: Item.Title %></h4>
-                    <h6>By: <%#: Item.UserName %></h6>
+                    <h6><em>On: <%# Item.CreationDate.ToShortDateString() %> By: <%#: Item.UserName %></em></h6>
                     <p><asp:Literal runat="server" Mode="Encode" Text="<%# Item.Content %>"></asp:Literal></p>
                     <a class="btn btn-primary btn-sm" href="CommentForm.aspx?id=<%#:Item.Id%>">Comment</a>
                         </div>

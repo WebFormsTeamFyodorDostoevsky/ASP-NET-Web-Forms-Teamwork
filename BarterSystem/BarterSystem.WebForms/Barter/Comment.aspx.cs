@@ -27,7 +27,15 @@ namespace BarterSystem.WebForms.Barter
             this.ListViewBarters.DataSource = uow.Advertisments
                 .All()
                 .Where(a => (a.AcceptUserId == userId && !a.CommentedByAcceptUser) || (a.UserId == userId && !a.CommentedByUser) && a.Status == Status.AwaitingFeedback)
-                .Select(a => new BarterForCommentViewModel() { UserName = username, Content = a.Content, Title = a.Title, Id = a.Id, ImageUrl = GlobalConstants.ImagesPath + a.ImageUrl })
+                .Select(a => new BarterForCommentViewModel() 
+                {
+                    UserName = username,
+                    Content = a.Content,
+                    Title = a.Title,
+                    Id = a.Id,
+                    ImageUrl = GlobalConstants.ImagesPath + a.ImageUrl,
+                    CreationDate = a.CreationDate
+                })
                 .ToList();
             
             Page.DataBind();
