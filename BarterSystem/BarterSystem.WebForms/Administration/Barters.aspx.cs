@@ -24,20 +24,38 @@ namespace BarterSystem.WebForms.Administration
         protected void ListView1_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
 
-            var id = int.Parse(
-                   AdminBarterVL.DataKeys[e.Item.DisplayIndex]
-                   .Value.ToString());
+
             if (String.Equals(e.CommandName, "Approve"))
             {
                 //TODO optimize this
+                var id = int.Parse(
+                   AdminBarterVL.DataKeys[e.Item.DisplayIndex]
+                   .Value.ToString());
                 new BarterObjectData().Aprove(id);
                 DataBind();
             }
             else if (String.Equals(e.CommandName, "Disapprove"))
             {
+                var id = int.Parse(
+                   AdminBarterVL.DataKeys[e.Item.DisplayIndex]
+                   .Value.ToString());
                 //TODO optimize this
                 new BarterObjectData().Disaprove(id);
                 DataBind();
+            }
+            else if (String.Equals(e.CommandName, "Sort"))
+            {
+                if (AdminBarterVL.SortExpression == e.CommandArgument.ToString() &&
+                    AdminBarterVL.SortDirection == SortDirection.Ascending)
+                {
+                   AdminBarterVL.Sort(e.CommandArgument.ToString() + "DESC"
+                        , SortDirection.Descending);
+                }
+                else
+                { 
+                    AdminBarterVL.Sort(e.CommandArgument.ToString()
+                    , SortDirection.Ascending);
+                }
             }
 
         }

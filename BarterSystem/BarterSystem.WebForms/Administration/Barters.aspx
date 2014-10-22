@@ -132,12 +132,18 @@
                         <table id="itemPlaceholderContainer" runat="server" border="0" style="">
                             <tr runat="server" style="">
                                 <th runat="server"></th>
-                                <th runat="server">UserName</th>
-                                <th runat="server">Title</th>
-                                <th runat="server">Content</th>
-                                <th runat="server">CategoryId</th>
-                                <th runat="server">Status</th>
-                                <th runat="server">Id</th>
+                                <th runat="server"><asp:LinkButton ID="SortByName" runat="server"
+                                     CommandArgument="Name" CommandName="Sort" Text="User name" /></th>
+                                <th runat="server"><asp:LinkButton ID="SortByTitle" runat="server"
+                                     CommandArgument="Title" CommandName="Sort" Text="Title" /></th>
+                                <th runat="server"><asp:LinkButton ID="SortByContent" runat="server"
+                                     CommandArgument="Content" CommandName="Content" Text="Content" /></th>
+                                <th runat="server"><asp:LinkButton ID="SortByCategory" runat="server"
+                                     CommandArgument="Category" CommandName="Sort" Text="Categor" /></th>
+                                <th runat="server"><asp:LinkButton ID="SortByStatus" runat="server"
+                                     CommandArgument="Status" CommandName="Sort" Text="Status" /></th>
+                                <th runat="server"><asp:LinkButton ID="SortById" runat="server"
+                                     CommandArgument="Id" CommandName="Sort" Text="Id" /></th>
                             </tr>
                             <tr id="itemPlaceholder" runat="server">
                             </tr>
@@ -146,7 +152,7 @@
                 </tr>
                 <tr runat="server">
                     <td runat="server" style="">
-                        <asp:DataPager ID="DataPager1" runat="server">
+                        <asp:DataPager ID="DataPager1" runat="server" PageSize="3" >
                             <Fields>
                                 <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
                             </Fields>
@@ -188,7 +194,15 @@
         InsertMethod="InsertObject" SelectMethod="GetBarters"
         TypeName="BarterSystem.WebForms.Barter.BarterObjectData"
         UpdateMethod="UpdateObject" DeleteMethod="DeleteObject"
-        ConflictDetection="CompareAllValues">
+        ConflictDetection="CompareAllValues"
+        SortParameterName="OrderBy"
+        MaximumRowsParameterName="GetCount"
+        StartRowIndexParameterName="StartIndex">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="AdminBarterVL" DefaultValue="Id" Name="OrderBy" PropertyName="SelectedValue" Type="String" />
+            <asp:Parameter DefaultValue="10" Name="ObjectsPerPage" Type="Int32" />
+            <asp:ControlParameter ControlID="AdminBarterVL" DefaultValue="10" Name="StartIndex" PropertyName="SelectedValue" Type="Int32" />
+        </SelectParameters>
     </asp:ObjectDataSource>
 </asp:Content>
 
