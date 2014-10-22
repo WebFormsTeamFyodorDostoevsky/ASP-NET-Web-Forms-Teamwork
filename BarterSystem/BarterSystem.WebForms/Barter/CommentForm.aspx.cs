@@ -52,6 +52,7 @@ namespace BarterSystem.WebForms.Barter
             comment.Feedback = (Feedback) Enum.Parse(typeof(Feedback), this.FeedbackType.Text);
             comment.Content = this.Content.Text;
             comment.UserId = this.User.Identity.GetUserId();
+            
             uow.Comments.Add(comment);
             uow.SaveChanges();
 
