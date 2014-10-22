@@ -21,5 +21,7 @@
         public IDbSet<Category> Categories { get; set; }
 
         public IDbSet<Advertisment> Advertisments { get; set; }
+
+        public IDbSet<Comment> Comments { get; set; }
     }
 }
