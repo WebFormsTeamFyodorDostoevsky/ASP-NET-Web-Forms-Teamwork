@@ -165,6 +165,7 @@
     <Content Include="Administration\Categories.aspx" />
     <Content Include="Administration\Users.aspx" />
     <Content Include="Barter\Comment.aspx" />
+    <Content Include="Barter\CommentForm.aspx" />
     <Content Include="Barter\Create.aspx" />
     <Content Include="Barter\Search.aspx" />
     <Content Include="Content\bootstrap.css" />
@@ -377,6 +378,13 @@
     </Compile>
     <Compile Include="Barter\Comment.aspx.designer.cs">
       <DependentUpon>Comment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Barter\CommentForm.aspx.cs">
+      <DependentUpon>CommentForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Barter\CommentForm.aspx.designer.cs">
+      <DependentUpon>CommentForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Barter\Create.aspx.cs">
       <DependentUpon>Create.aspx</DependentUpon>
