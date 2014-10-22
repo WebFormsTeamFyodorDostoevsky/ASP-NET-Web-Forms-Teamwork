@@ -6,6 +6,7 @@
     using System.Data.Entity;
     using BarterSystem.Data;
     using BarterSystem.WebForms.Models;
+    using BarterSystem.Models.Enums;
 
     public partial class Search : Page
     {
@@ -28,7 +29,7 @@
         //     string sortByExpression
         public IQueryable<BarterSystem.WebForms.Models.AdvertismentViewModel> DisplayBarters_GetData()
         {
-            ads = uow.Advertisments.All().Select(AdvertismentViewModel.FromAdvertisment);
+            ads = uow.Advertisments.All().Where(a => a.Status == Status.Available).Select(AdvertismentViewModel.FromAdvertisment);
             return ads;
         }
     }
