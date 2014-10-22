@@ -1,12 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Barters.aspx.cs" Inherits="BarterSystem.WebForms.Administration.Barters" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h3>Here are the barters</h3>
-    <asp:ListView ID="ListView1" runat="server" DataSourceID="BarterODS" >
+    <asp:ListView ID="AdminBarterVL" runat="server"
+        DataSourceID="BarterODS"
+        DataKeyNames="Id"
+        OnItemCommand="ListView1_ItemCommand">
         <AlternatingItemTemplate>
-            <tr style="background-color: #FAFAD2;color: #284775;">
+            <tr style="">
                 <td>
                     <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
                     <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
+                    <asp:Button ID="ApproveButton" runat="server" CommandName="Approve"
+                         Text="Approve" CommandArgument='<%# Eval("Id") %>' />
+                    <asp:Button ID="Disapprove" runat="server"  CommandName="Disapprove" 
+                        Text="Disapprove" CommandArgument='<%# Eval("Id") %>' />
                 </td>
                 <td>
                     <asp:Label ID="UserNameLabel" runat="server" Text='<%# Eval("UserName") %>' />
@@ -29,7 +37,7 @@
             </tr>
         </AlternatingItemTemplate>
         <EditItemTemplate>
-            <tr style="background-color: #FFCC66;color: #000080;">
+            <tr style="">
                 <td>
                     <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
                     <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
@@ -55,7 +63,7 @@
             </tr>
         </EditItemTemplate>
         <EmptyDataTemplate>
-            <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
+            <table runat="server" style="">
                 <tr>
                     <td>No data was returned.</td>
                 </tr>
@@ -88,10 +96,14 @@
             </tr>
         </InsertItemTemplate>
         <ItemTemplate>
-            <tr style="background-color: #FFFBD6;color: #333333;">
+            <tr style="">
                 <td>
                     <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
                     <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
+                    <asp:Button ID="ApproveButton" runat="server" CommandName="Approve"
+                         Text="Approve" CommandArgument='<%# Eval("Id") %>' />
+                    <asp:Button ID="Disapprove" runat="server"  CommandName="Disapprove" 
+                        Text="Disapprove" CommandArgument='<%# Eval("Id") %>' />
                 </td>
                 <td>
                     <asp:Label ID="UserNameLabel" runat="server" Text='<%# Eval("UserName") %>' />
@@ -117,8 +129,8 @@
             <table runat="server">
                 <tr runat="server">
                     <td runat="server">
-                        <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
-                            <tr runat="server" style="background-color: #FFFBD6;color: #333333;">
+                        <table id="itemPlaceholderContainer" runat="server" border="0" style="">
+                            <tr runat="server" style="">
                                 <th runat="server"></th>
                                 <th runat="server">UserName</th>
                                 <th runat="server">Title</th>
@@ -133,7 +145,7 @@
                     </td>
                 </tr>
                 <tr runat="server">
-                    <td runat="server" style="text-align: center;background-color: #FFCC66;font-family: Verdana, Arial, Helvetica, sans-serif;color: #333333;">
+                    <td runat="server" style="">
                         <asp:DataPager ID="DataPager1" runat="server">
                             <Fields>
                                 <asp:NextPreviousPagerField ButtonType="Button" ShowFirstPageButton="True" ShowLastPageButton="True" />
@@ -144,9 +156,10 @@
             </table>
         </LayoutTemplate>
         <SelectedItemTemplate>
-            <tr style="background-color: #FFCC66;font-weight: bold;color: #000080;">
+            <tr style="">
                 <td>
-                    <asp:Button ID="DeleteButton" runat="server" CommandName="Delete" Text="Delete" />
+                    <asp:Button ID="DeleteButton" runat="server" CommandName="Delete"
+                        Text="Delete" />
                     <asp:Button ID="EditButton" runat="server" CommandName="Edit" Text="Edit" />
                 </td>
                 <td>
@@ -170,11 +183,13 @@
             </tr>
         </SelectedItemTemplate>
     </asp:ListView>
-    <asp:ObjectDataSource ID="BarterODS" runat="server" 
+    <asp:ObjectDataSource ID="BarterODS" runat="server"
         DataObjectTypeName="BarterSystem.WebForms.Models.BarterViewModel"
-         InsertMethod="InsertObject" SelectMethod="GetBarters" 
+        InsertMethod="InsertObject" SelectMethod="GetBarters"
         TypeName="BarterSystem.WebForms.Barter.BarterObjectData"
-         UpdateMethod="UpdateObject" DeleteMethod="DeleteObject"></asp:ObjectDataSource>
+        UpdateMethod="UpdateObject" DeleteMethod="DeleteObject"
+        ConflictDetection="CompareAllValues">
+    </asp:ObjectDataSource>
 </asp:Content>
 
 

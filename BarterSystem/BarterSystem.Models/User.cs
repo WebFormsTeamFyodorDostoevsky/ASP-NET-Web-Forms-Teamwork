@@ -23,17 +23,21 @@
             this.comments = new HashSet<Comment>();
         }
 
-        //[Required]
-        //public string FirstName { get; set; }
+        [Required]
+        [MinLength(3)]
+        [MaxLength(30)]
+        public string FirstName { get; set; }
 
-        //[Required]
-        //public string LastName { get; set; }
+        [Required]
+        [MinLength(3)]
+        [MaxLength(30)]
+        public string LastName { get; set; }
 
-        //[Required]
-        //public string AvatarUrl { get; set; }
+        [Required]
+        public string AvatarUrl { get; set; }
 
-        //[Required]
-        //public int Rating { get; set; }
+        [Required]
+        public int Rating { get; set; }
 
         public ICollection<Comment> Comments
         {
