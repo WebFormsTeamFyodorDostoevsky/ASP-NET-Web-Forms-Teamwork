@@ -63,19 +63,20 @@
         }
         public void DeleteObject(BarterViewModel barterData)
         {
+            
             var barter = data.Advertisments.Find(barterData.Id);
             barter.Status = Status.Deleted;
             data.SaveChanges();
         }
-        public void Aprove(BarterViewModel barterData)
+        public void Aprove(int id)
         {
-            var barter = data.Advertisments.Find(barterData.Id);
+            var barter = data.Advertisments.Find(id);
             barter.Status = Status.Available;
             data.SaveChanges();
         }
-        public void Disaprove(BarterViewModel barterData)
+        public void Disaprove(int id)
         {
-            var barter = data.Advertisments.Find(barterData.Id);
+            var barter = data.Advertisments.Find(id);
             barter.Status = Status.Disaproved;
             data.SaveChanges();
         }
