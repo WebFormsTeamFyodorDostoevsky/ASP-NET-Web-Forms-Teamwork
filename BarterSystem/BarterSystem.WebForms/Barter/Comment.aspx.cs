@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using BarterSystem.Models.Enums;
 using BarterSystem.WebForms.Models;
+using BarterSystem.Common;
 
 namespace BarterSystem.WebForms.Barter
 {
@@ -26,8 +27,9 @@ namespace BarterSystem.WebForms.Barter
             this.ListViewBarters.DataSource = uow.Advertisments
                 .All()
                 .Where(a => (a.AcceptUserId == userId && !a.CommentedByAcceptUser) || (a.UserId == userId && !a.CommentedByUser) && a.Status == Status.AwaitingFeedback)
-                .Select(a => new BarterViewModel() { UserName = username, Content = a.Content, Title = a.Title, Id = a.Id })
+                .Select(a => new BarterForCommentViewModel() { UserName = username, Content = a.Content, Title = a.Title, Id = a.Id, ImageUrl = GlobalConstants.ImagesPath + a.ImageUrl })
                 .ToList();
+            
             Page.DataBind();
         }
     }
