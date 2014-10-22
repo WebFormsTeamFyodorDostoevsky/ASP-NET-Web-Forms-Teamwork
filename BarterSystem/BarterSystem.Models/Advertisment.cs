@@ -17,9 +17,13 @@
 
         public User User { get; set; }
 
+        public bool CommentedByUser { get; set; }
+
         public string AcceptUserId { get; set; }
 
         public User AcceptUser { get; set; }
+
+        public bool CommentedByAcceptUser { get; set; }
 
         public int CategoryId { get; set; }
 

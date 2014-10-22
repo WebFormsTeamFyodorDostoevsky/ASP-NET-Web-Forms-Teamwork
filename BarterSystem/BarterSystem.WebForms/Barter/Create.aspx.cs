@@ -40,6 +40,8 @@ namespace BarterSystem.WebForms.Barter
                 newAd.CategoryId = uow.Categories.All().FirstOrDefault(c => c.Name == this.Category.SelectedValue).Id;
                 newAd.UserId = this.User.Identity.GetUserId();
                 newAd.Status = Status.Unapproved;
+                newAd.CommentedByUser = false;
+                newAd.CommentedByAcceptUser = false;
                 uow.Advertisments.Add(newAd);
                 uow.SaveChanges();
                 Notifier.Success("Barter offer successfully created");
