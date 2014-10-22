@@ -12,6 +12,8 @@ using BarterSystem.WebForms.Controls.Notifier;
 
 namespace BarterSystem.WebForms.Barter
 {
+    using BarterSystem.Common;
+
     public partial class Create : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
@@ -42,6 +44,29 @@ namespace BarterSystem.WebForms.Barter
                 newAd.Status = Status.Unapproved;
                 newAd.CommentedByUser = false;
                 newAd.CommentedByAcceptUser = false;
+
+                if (this.FileUploadImage.HasFile)
+                {
+                    if (this.FileUploadImage.PostedFile.ContentLength > 1024000)
+                    {
+                        Notifier.Error("File has to be less than 1MB");
+                        return;
+                    }
+                    else
+                    {
+                        string fileName = this.FileUploadImage.PostedFile.FileName;
+                        var fileExtension = fileName.Substring(fileName.LastIndexOf('.'));
+                        var newName = Guid.NewGuid() + fileExtension;
+                        this.FileUploadImage.SaveAs(Server.MapPath(GlobalConstants.ImagesPath + newName));
+
+                        newAd.ImageUrl = newName;
+                    }
+                }
+                else
+                {
+                    newAd.ImageUrl = GlobalConstants.DefautlBarterImg;
+                }
+
                 uow.Advertisments.Add(newAd);
                 uow.SaveChanges();
                 Notifier.Success("Barter offer successfully created");
