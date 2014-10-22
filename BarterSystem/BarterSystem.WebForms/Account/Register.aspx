@@ -15,17 +15,23 @@
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="FirstName" CssClass="col-md-2 control-label">First Name</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="FirstName" CssClass="form-control" placeholder='First Name' />
-                <asp:RequiredFieldValidator runat="server" ControlToValidate="FirstName"
+                <asp:TextBox runat="server" ID="FirstName" CssClass="form-control" placeholder='First Name' MaxLength="30" />
+                <asp:RegularExpressionValidator Display="Dynamic" runat="server" ControlToValidate="FirstName"
+                    ValidationExpression=".{3}.*"
+                    CssClass="text-danger" ErrorMessage="Minimum first name length is 3." />
+                <asp:RequiredFieldValidator Display="Dynamic" runat="server" ControlToValidate="FirstName"
                     CssClass="text-danger" ErrorMessage="The first name field is required." />
             </div>
         </div>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="LastName" CssClass="col-md-2 control-label">Last Name</asp:Label>
             <div class="col-md-10">
-                <asp:TextBox runat="server" ID="LastName" CssClass="form-control" placeholder='Last Name' />
+                <asp:TextBox runat="server" ID="LastName" CssClass="form-control" placeholder='Last Name' MaxLength="30" />
+                <asp:RegularExpressionValidator runat="server" ControlToValidate="LastName"
+                    ValidationExpression=".{3}.*"
+                    CssClass="text-danger" Display="Dynamic" ErrorMessage="Minimum last name length is 3." />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="LastName"
-                    CssClass="text-danger" ErrorMessage="The last name field is required." />
+                    CssClass="text-danger" Display="Dynamic" ErrorMessage="The last name field is required." />
             </div>
         </div>
         <div class="form-group">
