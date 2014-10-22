@@ -17,7 +17,7 @@
                 <h4>Change your account settings</h4>
                 <hr />
                 <div class="col-md-3">
-                    <asp:Image runat="server" ID="Avatar" CssClass="thumbnail" />
+                    <asp:Image runat="server" ID="Avatar" CssClass="thumbnail col-md-12" />
                     <asp:HyperLink NavigateUrl="/Account/ChangeAvatar" Text="[Change Avatar]" ID="ChangeAvatar" runat="server" />
                 </div>
 
