@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
+using BarterSystem.WebForms.Controls.Notifier;
 
 namespace BarterSystem.WebForms.Barter
 {
@@ -45,8 +46,10 @@ namespace BarterSystem.WebForms.Barter
             comment.Content = this.Content.Text;
             comment.UserId = this.User.Identity.GetUserId();
             uow.Comments.Add(comment);
-
             uow.SaveChanges();
+
+            Notifier.Success("Barter offer successfully commented");
+            Server.Transfer("~/Barter/Comment.aspx", true);
         }
     }
 }
