@@ -39,7 +39,7 @@
         [Required]
         public int Rating { get; set; }
 
-        public ICollection<Comment> Comments
+        public virtual ICollection<Comment> Comments
         {
             get
             {
@@ -52,7 +52,7 @@
             }
         }
 
-        public ICollection<Advertisment> Advertisments
+        public virtual ICollection<Advertisment> Advertisments
         {
             get
             {
@@ -65,7 +65,7 @@
             }
         }
 
-        public ICollection<Category> Skills
+        public virtual ICollection<Category> Skills
         {
             get
             {
