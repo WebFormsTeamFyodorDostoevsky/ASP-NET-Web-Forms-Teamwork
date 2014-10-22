@@ -31,11 +31,13 @@ namespace BarterSystem.WebForms.Administration
             {
                 //TODO optimize this
                 new BarterObjectData().Aprove(id);
+                DataBind();
             }
             else if (String.Equals(e.CommandName, "Disapprove"))
             {
                 //TODO optimize this
                 new BarterObjectData().Disaprove(id);
+                DataBind();
             }
 
         }
