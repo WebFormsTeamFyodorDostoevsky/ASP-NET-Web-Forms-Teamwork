@@ -2,6 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
     using BarterSystem.Models.Enums;
+    using System;
 
     public class Advertisment
     {
@@ -12,6 +13,8 @@
 
         [Required]
         public string Content { get; set; }
+
+        public DateTime CreationDate { get; set; }
 
         public string UserId { get; set; }
 

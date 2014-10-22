@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="Comment Barter" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CommentForm.aspx.cs" Inherits="BarterSystem.WebForms.Barter.CommentForm" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h2><%: Title %>.</h2>
+    <h2><%: Title %>: <asp:Literal runat="server" ID="BarterTitle"/> - <asp:Literal runat="server" ID="BarterAuthor"/></h2>
+    <asp:Image runat="server" ID="Photo" AlternateText="Barter photo" Width="140"/>
     <div class="form-horizontal">
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="FeedbackType" CssClass="col-md-2 control-label">Type</asp:Label>
@@ -11,7 +12,7 @@
             </div>
         </div>
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="Content" CssClass="col-md-2 control-label">Content</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="Content" CssClass="col-md-2 control-label">Comment</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="Content" TextMode="MultiLine" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Content"
