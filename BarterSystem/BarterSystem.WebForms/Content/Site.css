@@ -44,3 +44,7 @@ input[type="select"] {
         padding: 0;
     }
 }
+
+.invisible{
+    display:none
+}

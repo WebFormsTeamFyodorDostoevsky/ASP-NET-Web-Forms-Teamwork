@@ -455,6 +455,7 @@
     <Compile Include="Models\BarterForCommentViewModel.cs" />
     <Compile Include="Models\BarterViewModel.cs" />
     <Compile Include="Models\CommentViewModel.cs" />
+    <Compile Include="Models\CategoryViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Profile.aspx.cs">
