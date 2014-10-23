@@ -76,6 +76,15 @@ namespace BarterSystem.WebForms {
         protected global::System.Web.UI.WebControls.ListView Comments;
         
         /// <summary>
+        /// DataPagerComments control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataPager DataPagerComments;
+        
+        /// <summary>
         /// DisplayBarters control.
         /// </summary>
         /// <remarks>

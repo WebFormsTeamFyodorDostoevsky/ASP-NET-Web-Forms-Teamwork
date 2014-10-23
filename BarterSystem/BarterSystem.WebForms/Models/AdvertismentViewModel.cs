@@ -1,10 +1,11 @@
 ﻿namespace BarterSystem.WebForms.Models
 {
-    using BarterSystem.Models;
     using System;
     using System.Linq.Expressions;
 
+    using BarterSystem.Models;
     using BarterSystem.Models.Enums;
+    using BarterSystem.Common;
 
     public class AdvertismentViewModel
     {
@@ -15,11 +16,13 @@
                 return ad => new AdvertismentViewModel
                 {
                     Id = ad.Id,
+                    UserId = ad.UserId,
                     Title = ad.Title,
                     CategoryName = ad.Category.Name,
                     Status = ad.Status,
                     CreationDate = ad.CreationDate,
-                    Username = ad.User.UserName
+                    Username = ad.User.UserName,
+                    ImageUrl = GlobalConstants.ImagesPath + ad.ImageUrl
                 };
             }
         }
@@ -35,5 +38,9 @@
         public DateTime CreationDate { get; set; }
 
         public string Username { get; set; }
+
+        public string ImageUrl { get; set; }
+
+        public string UserId { get; set; }
     }
 }

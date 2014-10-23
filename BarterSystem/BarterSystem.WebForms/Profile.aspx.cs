@@ -1,10 +1,10 @@
 ﻿namespace BarterSystem.WebForms
 {
     using System;
-    using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
     using System.Web.UI;
+    using System.Web.UI.WebControls;
 
     using BarterSystem.Common;
     using BarterSystem.Data;
@@ -14,6 +14,8 @@
 
     public partial class Profile : Page
     {
+        public UserViewModel UserModel { get; set; }
+
         public IQueryable<AdvertismentViewModel> DisplayBartersGetData()
         {
             var data = new BarterSystemData();
@@ -31,24 +33,34 @@
 
             if (!this.Page.IsPostBack)
             {
-                var data = new BarterSystemData();
-                var userId = this.User.Identity.GetUserId();
-                var user = data.Users.All()
-                            .Where(u => u.Id == userId)
-                            .Select(UserViewModel.FromDataToModel)
-                            .First();
-                this.Avatar.ImageUrl = GlobalConstants.ImagesPath + user.AvatarUrl;
-                this.Username.Text = user.Username;
-                this.Name.Text = string.Format("{0} {1}", user.FirstName, user.LastName);
-                this.NameHeader.Text = string.Format("{0} {1}", user.FirstName, user.LastName);
-                this.Rating.Text = user.Rating.ToString(CultureInfo.InvariantCulture);
-
-                this.Skills.DataSource = user.Skills;
-                this.Skills.DataBind();
-
-                this.Comments.DataSource = user.Comments;
-                this.Comments.DataBind();
+                this.BindData();
             }
+        }
+
+        protected void ListEvents_PagePropertiesChanging(object sender, PagePropertiesChangingEventArgs e)
+        {
+            this.DataPagerComments.SetPageProperties(e.StartRowIndex, e.MaximumRows, false);
+
+            // rebind List View
+            this.BindData();
+        }
+
+        private void BindData()
+        {
+            var data = new BarterSystemData();
+            var userId = this.User.Identity.GetUserId();
+            this.UserModel = data.Users.All().Where(u => u.Id == userId).Select(UserViewModel.FromDataToModel).First();
+            this.Avatar.ImageUrl = GlobalConstants.ImagesPath + this.UserModel.AvatarUrl;
+            this.Username.Text = this.UserModel.Username;
+            this.Name.Text = string.Format("{0} {1}", this.UserModel.FirstName, this.UserModel.LastName);
+            this.NameHeader.Text = string.Format("{0} {1}", this.UserModel.FirstName, this.UserModel.LastName);
+            this.Rating.Text = this.UserModel.Rating.ToString(CultureInfo.InvariantCulture);
+
+            this.Skills.DataSource = this.UserModel.Skills;
+            this.Skills.DataBind();
+
+            this.Comments.DataSource = this.UserModel.Comments.ToList();
+            this.Comments.DataBind();
         }
     }
 }

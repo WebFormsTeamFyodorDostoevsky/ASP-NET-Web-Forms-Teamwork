@@ -1,6 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Search.aspx.cs" Inherits="BarterSystem.WebForms.Barter.Search" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h3>Here you can search and filter all the barters.</h3>
+    <div class="container row">
+        <asp:TextBox ID="SearchBox" runat="server" CssClass="col-md-4 form-control">
+
+        </asp:TextBox>
+        <asp:LinkButton ID="SearchBtn" runat="server" CssClass="col-md-1 btn btn-primary" Text="Search" OnClick="SearchBtn_Click">
+
+        </asp:LinkButton>
+    </div>
+    <br />
     <asp:ListView ID="DisplayBarters" 
                   runat="server"
                   ItemType="BarterSystem.WebForms.Models.AdvertismentViewModel" 
@@ -11,6 +20,9 @@
         <LayoutTemplate>
             <table runat="server" id="View" class="table table-striped table-hover ">
                 <tr runat="server">
+                    <th runat="server">
+                        <asp:LinkButton runat="server" ID="Photo">Photo</asp:LinkButton>
+                    </th>
                     <th runat="server">
                         <asp:LinkButton runat="server" ID="SortByTitle" CommandName="Sort" CommandArgument="Title">Title</asp:LinkButton>
                     </th>
@@ -42,11 +54,12 @@
         </LayoutTemplate>
         <ItemTemplate>
             <tr>
+                <td><asp:Image runat="server" AlternateText="Barter photo" Width="80px" ImageUrl="<%#: Item.ImageUrl %>"/></td>
                 <td><%#: Item.Title %></td>
                 <td><%#: Item.CategoryName %></td>
                 <td><%#: Item.CreationDate %></td>
                 <td>
-                    <%#: Item.Username %>
+                    <a href="/UserDetails?id=<%#: Item.UserId %>"><%#: Item.Username %></a>
                 </td>
                 <td>
                     <asp:Button ID="AcceptButton" Text="Accept" CssClass="btn btn-success" runat="server" CommandArgument='<%#: Item.Id %>' CommandName="Accept" OnCommand="AcceptButton_Click"/>

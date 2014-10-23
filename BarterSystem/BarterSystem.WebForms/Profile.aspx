@@ -45,8 +45,16 @@
                         Comments:
                     </div>
                     <div class="panel-body">
-                        <asp:ListView runat="server"
-                            ID="Comments" ItemType="BarterSystem.WebForms.Models.CommentViewModel">
+                        <asp:ListView runat="server" ItemPlaceholderID="itemPlaceholder"
+                            ID="Comments" ItemType="BarterSystem.WebForms.Models.CommentViewModel"
+                            OnPagePropertiesChanging="ListEvents_PagePropertiesChanging">
+                            <LayoutTemplate>
+                                <ul class="list-group">
+                                    <div runat="server" id="itemPlaceholder">
+                                    </div>
+                                </ul>
+                            </LayoutTemplate>
+                            
                             <ItemTemplate>
                                 <li class="list-group-item col-md-12" runat="server">
                                     <p class="col-md-10">
@@ -61,6 +69,15 @@
                                 <h3>No comments to show</h3>
                             </EmptyDataTemplate>
                         </asp:ListView>
+                        <asp:DataPager ID="DataPagerComments" PagedControlID="Comments" runat="server" PageSize="5">
+                            <Fields>
+                                <asp:NextPreviousPagerField ShowFirstPageButton="True"
+                                    ShowNextPageButton="False" ShowPreviousPageButton="False" ButtonCssClass="btn btn-default" />
+                                <asp:NumericPagerField CurrentPageLabelCssClass="btn btn-default" NextPreviousButtonCssClass="btn btn-default" NumericButtonCssClass="btn btn-default" />
+                                <asp:NextPreviousPagerField ShowLastPageButton="True"
+                                    ShowNextPageButton="False" ShowPreviousPageButton="False" ButtonCssClass="btn btn-default" />
+                            </Fields>
+                        </asp:DataPager>
                     </div>
                 </div>
             </div>

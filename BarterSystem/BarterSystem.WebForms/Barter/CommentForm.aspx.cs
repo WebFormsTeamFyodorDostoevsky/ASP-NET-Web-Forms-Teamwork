@@ -27,17 +27,20 @@ namespace BarterSystem.WebForms.Barter
                 Response.Redirect("~/");
             }
 
-            var itemNames = System.Enum.GetNames(typeof(BarterSystem.Models.Enums.Feedback));
-            var sorted = itemNames.ToList().OrderByDescending(a => a);
-            this.FeedbackType.DataSource = sorted;
-            var barterId = int.Parse(paramId);
-            var uow = new BarterSystemData();
-            var commentedBarter = uow.Advertisments.Find(barterId);
-            this.BarterTitle.Text = commentedBarter.Title;
-            this.BarterAuthor.Text = commentedBarter.User.UserName;
-            this.Photo.ImageUrl = GlobalConstants.ImagesPath + commentedBarter.ImageUrl;
-            this.barterContent.Text = "Content: " + commentedBarter.Content;
-            Page.DataBind();
+            if (!IsPostBack)
+            {
+                var itemNames = System.Enum.GetNames(typeof(BarterSystem.Models.Enums.Feedback));
+                var sorted = itemNames.ToList().OrderByDescending(a => a);
+                this.FeedbackType.DataSource = sorted;
+                var barterId = int.Parse(paramId);
+                var uow = new BarterSystemData();
+                var commentedBarter = uow.Advertisments.Find(barterId);
+                this.BarterTitle.Text = commentedBarter.Title;
+                this.BarterAuthor.Text = commentedBarter.User.UserName;
+                this.Photo.ImageUrl = GlobalConstants.ImagesPath + commentedBarter.ImageUrl;
+                this.barterContent.Text = "Content: " + commentedBarter.Content;
+                Page.DataBind();
+            }
         }
 
         protected void Save_Click(object sender, EventArgs e)
@@ -71,7 +74,8 @@ namespace BarterSystem.WebForms.Barter
                 }
 
                 var comment = new BarterSystem.Models.Comment();
-                comment.Feedback = (Feedback)Enum.Parse(typeof(Feedback), this.FeedbackType.Text);
+                var selected = this.FeedbackType;
+                comment.Feedback = (Feedback)Enum.Parse(typeof(Feedback), selected.Text);
                 comment.Content = this.Content.Text;
                 if(commentedBarter.UserId == userId)
                 {
@@ -82,6 +86,17 @@ namespace BarterSystem.WebForms.Barter
                     comment.UserId = commentedBarter.UserId;
                 }
 
+                var user = uow.Users.Find(comment.UserId);
+                if (comment.Feedback == Feedback.Positive)
+                {
+                    user.Rating++;
+                }
+                else if (comment.Feedback == Feedback.Negative)
+                {
+                    user.Rating--;
+                }
+
+                uow.Users.Update(user);
                 uow.Comments.Add(comment);
                 uow.SaveChanges();
 
