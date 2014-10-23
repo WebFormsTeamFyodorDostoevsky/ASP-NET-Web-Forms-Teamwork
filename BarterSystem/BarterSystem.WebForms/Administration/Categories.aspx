@@ -64,7 +64,8 @@
             <asp:DataPager runat="server" PageSize="5">
                 <Fields>
                     <asp:NextPreviousPagerField ShowFirstPageButton="true" ShowNextPageButton="true"
-                        ShowLastPageButton="true" ShowPreviousPageButton="true" />
+                        ShowLastPageButton="true" ShowPreviousPageButton="true"
+                        ButtonCssClass="btn btn-primary btn-sm"  />
                 </Fields>
             </asp:DataPager>
         </LayoutTemplate>
