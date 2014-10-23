@@ -15,6 +15,8 @@
                     <asp:TextBox runat="server"
                         Text='<%# Bind("Name") %>'
                         ID="CategoryNameTextBox" />
+                    <asp:RequiredFieldValidator runat="server" ControlToValidate="CategoryNameTextBox"
+                        CssClass=".validation-warrning" ErrorMessage="The Category name is required.<br/>" />
                     <asp:TextBox runat="server" CssClass="invisible"
                         Text='<%# Bind("Id") %>'
                         ID="CategoryIdTextBox" />
@@ -66,15 +68,16 @@
                 <Fields>
                     <asp:NextPreviousPagerField ShowFirstPageButton="true" ShowNextPageButton="true"
                         ShowLastPageButton="true" ShowPreviousPageButton="true"
-                        ButtonCssClass="btn btn-primary btn-sm"  />
+                        ButtonCssClass="btn btn-primary btn-sm" />
                 </Fields>
             </asp:DataPager>
         </LayoutTemplate>
     </asp:ListView>
-    <div class='form-group'>
+    <form>
+
         <asp:Label Text="New category name " AssociatedControlID="NewCategoryName" runat="server" />
         <asp:TextBox runat="server" CssClass="form-control" ID="NewCategoryName" />
         <asp:Button Text="Create category" runat="server" CssClass="btn btn-primary" OnClick="CreateCategory_Click" />
-    </div>
+    </form>
 
 </asp:Content>

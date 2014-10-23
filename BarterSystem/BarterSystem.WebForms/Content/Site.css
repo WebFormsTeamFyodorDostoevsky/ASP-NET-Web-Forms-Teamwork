@@ -4,11 +4,11 @@ body {
     padding-bottom: 20px;
 }
 
-.fix{
+.fix {
     margin-top: -45px;
 }
 
-.black{
+.black {
     color: black;
 }
 
@@ -40,11 +40,15 @@ input[type="select"] {
     .jumbotron {
         margin-top: 20px;
     }
+
     .body-content {
         padding: 0;
     }
 }
 
-.invisible{
-    display:none
+.invisible {
+    display: none;
+}
+.validation-warrning{
+    color:red;
 }

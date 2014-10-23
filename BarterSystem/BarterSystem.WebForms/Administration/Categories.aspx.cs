@@ -10,6 +10,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 using BarterSystem.WebForms.Controls.Notifier;
+using System.Drawing;
 namespace BarterSystem.WebForms.Administration
 {
     public partial class Categories : System.Web.UI.Page
@@ -91,11 +92,17 @@ namespace BarterSystem.WebForms.Administration
 
         protected void CreateCategory_Click(object sender, EventArgs e)
         {
+            if (this.NewCategoryName.Text=="")
+            {
+                NewCategoryName.BorderColor = Color.Red;
+                return;
+            }
             var itemData = new Category()
             {
                 //TODO some validation would be nice
                 Name = this.NewCategoryName.Text
             };
+            NewCategoryName.BorderColor = Color.Black;
             this.NewCategoryName.Text="";
             data.Categories.Add(itemData);
             data.SaveChanges();
