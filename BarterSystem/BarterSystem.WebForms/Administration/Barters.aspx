@@ -50,20 +50,20 @@
                     <asp:TextBox ID="TitleTextBox" runat="server" Text='<%# Bind("Title") %>' />
                     <asp:RequiredFieldValidator runat="server"
                          ControlToValidate="TitleTextBox"
-                        CssClass=".validation-warrning" ErrorMessage="*" />
+                        CssClass="validation-warrning" ErrorMessage="*" />
                     <asp:RegularExpressionValidator Display="Dynamic" runat="server" 
                         ControlToValidate="TitleTextBox"
                         ValidationExpression="^[\s\S]{5,50}$"
-                        CssClass=".validation-warrning" ErrorMessage="*" />
+                        CssClass="validation-warrning" ErrorMessage="*" />
                 </td>
                 <td>
                     <asp:TextBox ID="ContentTextBox" runat="server" Text='<%# Bind("Content") %>' />
                      <asp:RequiredFieldValidator runat="server" 
                          ControlToValidate="ContentTextBox"
-                        CssClass=".validation-warrning" ErrorMessage="*" />
+                        CssClass="validation-warrning" ErrorMessage="*" />
                     <asp:RegularExpressionValidator Display="Dynamic" runat="server" ControlToValidate="ContentTextBox"
                         ValidationExpression="^[\s\S]{5,200}$"
-                        CssClass=".validation-warrning" ErrorMessage="*" />
+                        CssClass="validation-warrning" ErrorMessage="*" />
                 </td>
                 <td>
                     <asp:DropDownList runat="server" ID="CategoryPicker"

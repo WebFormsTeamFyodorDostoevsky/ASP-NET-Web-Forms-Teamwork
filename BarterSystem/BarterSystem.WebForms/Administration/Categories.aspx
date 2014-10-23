@@ -16,7 +16,7 @@
                         Text='<%# Bind("Name") %>'
                         ID="CategoryNameTextBox" />
                     <asp:RequiredFieldValidator runat="server" ControlToValidate="CategoryNameTextBox"
-                        CssClass=".validation-warrning" ErrorMessage="The Category name is required.<br/>" />
+                        CssClass="validation-warrning" ErrorMessage="The Category name is required.<br/>" />
                     <asp:TextBox runat="server" CssClass="invisible"
                         Text='<%# Bind("Id") %>'
                         ID="CategoryIdTextBox" />
