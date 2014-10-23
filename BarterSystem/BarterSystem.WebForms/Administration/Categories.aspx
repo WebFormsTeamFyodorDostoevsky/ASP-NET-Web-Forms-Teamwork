@@ -59,8 +59,8 @@
                 <tr runat="server" id="itemPlaceholder">
                 </tr>
 
-
             </table>
+
             <asp:DataPager runat="server" PageSize="5">
                 <Fields>
                     <asp:NextPreviousPagerField ShowFirstPageButton="true" ShowNextPageButton="true"
@@ -69,7 +69,10 @@
             </asp:DataPager>
         </LayoutTemplate>
     </asp:ListView>
-    <asp:Label Text="New category name " runat="server" />
-    <asp:TextBox runat="server" ID="NewCategoryName" />
-    <asp:Button Text="Create category" runat="server" OnClick="CreateCategory_Click" />
+    <div>
+        <asp:Label Text="New category name " AssociatedControlID="NewCategoryName" runat="server" />
+        <asp:TextBox runat="server" ID="NewCategoryName" />
+        <asp:Button Text="Create category" runat="server" OnClick="CreateCategory_Click" />
+    </div>
+
 </asp:Content>

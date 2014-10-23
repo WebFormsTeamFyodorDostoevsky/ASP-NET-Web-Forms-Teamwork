@@ -16,8 +16,10 @@
                 {
                     Id = ad.Id,
                     Title = ad.Title,
+                    CategoryName = ad.Category.Name,
                     Status = ad.Status,
-                    CategoryName = ad.Category.Name
+                    CreationDate = ad.CreationDate,
+                    Username = ad.User.UserName
                 };
             }
         }
@@ -29,5 +31,9 @@
         public string CategoryName { get; set; }
 
         public Status Status { get; set; }
+
+        public DateTime CreationDate { get; set; }
+
+        public string Username { get; set; }
     }
 }

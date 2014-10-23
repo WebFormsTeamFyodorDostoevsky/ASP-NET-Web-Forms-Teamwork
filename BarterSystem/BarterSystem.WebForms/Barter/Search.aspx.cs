@@ -3,7 +3,8 @@
     using System;
     using System.Linq;
     using System.Web.UI;
-    using System.Data.Entity;
+    using System.Web.UI.WebControls;
+    using Microsoft.AspNet.Identity;
     using BarterSystem.Data;
     using BarterSystem.WebForms.Models;
     using BarterSystem.Models.Enums;
@@ -29,8 +30,25 @@
         //     string sortByExpression
         public IQueryable<BarterSystem.WebForms.Models.AdvertismentViewModel> DisplayBarters_GetData()
         {
-            ads = uow.Advertisments.All().Where(a => a.Status == Status.Available).Select(AdvertismentViewModel.FromAdvertisment);
+            var currentUserId = this.User.Identity.GetUserId();
+            ads = uow.Advertisments.All().Where(a => a.Status == Status.Available && a.UserId != currentUserId).Select(AdvertismentViewModel.FromAdvertisment);
             return ads;
+        }
+
+        protected void AcceptButton_Click(object sender, CommandEventArgs e)
+        {
+            var adId = int.Parse(e.CommandArgument.ToString());
+            var currentUserId = this.User.Identity.GetUserId();
+            var ad = uow.Advertisments.All().FirstOrDefault(a => a.Id == adId && a.UserId != currentUserId);
+
+            if (ad != null)
+            {
+                ad.Status = Status.AwaitingFeedback;
+                ad.AcceptUserId = currentUserId;
+                uow.SaveChanges();
+            }            
+
+            Response.Redirect("~/Barter/Search.aspx");
         }
     }
 }
