@@ -63,7 +63,7 @@
                 </td>
                 <td>
                     <asp:Button ID="AcceptButton" Text="Accept" CssClass="btn btn-success" runat="server" CommandArgument='<%#: Item.Id %>' CommandName="Accept" OnCommand="AcceptButton_Click"/>
-                </td>
+                </td>   
             </tr>
         </ItemTemplate>
     </asp:ListView>

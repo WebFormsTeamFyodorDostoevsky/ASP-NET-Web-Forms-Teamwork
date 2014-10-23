@@ -38,14 +38,16 @@
                 ads = uow.Advertisments
                          .All()
                          .Where(a => a.Status == Status.Available && a.UserId != currentUserId)
-                         .Select(AdvertismentViewModel.FromAdvertisment);
+                         .Select(AdvertismentViewModel.FromAdvertisment)
+                         .OrderByDescending(a => a.CreationDate);
             }
             else
             {
                 ads = uow.Advertisments
                          .All()
                          .Where(a => a.Status == Status.Available && a.UserId != currentUserId && a.Title.Contains(idStr))
-                         .Select(AdvertismentViewModel.FromAdvertisment);
+                         .Select(AdvertismentViewModel.FromAdvertisment)
+                         .OrderByDescending(a => a.CreationDate);
             }
 
             return ads;

@@ -1,9 +1,9 @@
 
 ##We are team Fyodor Dostoevsky:
-- [stefan.sinapov]() ( Стефан Синапов )
-- [LazarDL](https://github.com/LazarDL) ( Лазар Лазаров )
-- [anilak](https://github.com/kalinalazarova1) ( Калина Лазарова )
-- [adzhazhev](https://github.com/adzhazhev) ( Александър Джажев )
+- [stefan.sinapov](https://github.com/StefanSinapov) ( Stefan Sinapov )
+- [LazarDL](https://github.com/LazarDL) ( Lazar Lazarov )
+- [anilak](https://github.com/kalinalazarova1) ( Kalina Lazarova )
+- [adzhazhev](https://github.com/adzhazhev) ( Alexander Dzhazhev )
 
 [GitHub](https://github.com/WebFormsTeamFyodorDostoevsky/ASP-NET-Web-Forms-Teamwork)
 
