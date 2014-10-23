@@ -101,7 +101,7 @@ namespace BarterSystem.WebForms.Barter
                 uow.SaveChanges();
 
                 Notifier.Success("Barter offer successfully commented");
-                Server.Transfer("~/Barter/Comment.aspx", true);
+                Response.Redirect("~/Barter/Comment");
             }
             else
             {
