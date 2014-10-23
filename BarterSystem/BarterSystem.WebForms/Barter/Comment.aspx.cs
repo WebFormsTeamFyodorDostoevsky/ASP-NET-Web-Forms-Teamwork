@@ -27,6 +27,7 @@ namespace BarterSystem.WebForms.Barter
             this.ListViewBarters.DataSource = uow.Advertisments
                 .All()
                 .Where(a => (a.AcceptUserId == userId && !a.CommentedByAcceptUser) || (a.UserId == userId && !a.CommentedByUser) && a.Status == Status.AwaitingFeedback)
+                .OrderByDescending(a => a.CreationDate)
                 .Select(a => new BarterForCommentViewModel() 
                 {
                     UserName = username,
