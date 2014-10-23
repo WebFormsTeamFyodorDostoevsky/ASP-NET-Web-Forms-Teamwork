@@ -59,7 +59,7 @@
                 <td><%#: Item.CategoryName %></td>
                 <td><%#: Item.CreationDate %></td>
                 <td>
-                    <%#: Item.Username %>
+                    <a href="/UserDetails?id=<%#: Item.UserId %>"><%#: Item.Username %></a>
                 </td>
                 <td>
                     <asp:Button ID="AcceptButton" Text="Accept" CssClass="btn btn-success" runat="server" CommandArgument='<%#: Item.Id %>' CommandName="Accept" OnCommand="AcceptButton_Click"/>

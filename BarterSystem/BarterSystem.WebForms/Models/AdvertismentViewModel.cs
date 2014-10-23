@@ -16,6 +16,7 @@
                 return ad => new AdvertismentViewModel
                 {
                     Id = ad.Id,
+                    UserId = ad.UserId,
                     Title = ad.Title,
                     CategoryName = ad.Category.Name,
                     Status = ad.Status,
@@ -39,5 +40,7 @@
         public string Username { get; set; }
 
         public string ImageUrl { get; set; }
+
+        public string UserId { get; set; }
     }
 }
