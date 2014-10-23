@@ -1,35 +1,36 @@
-ASP-NET-Web-Forms-Teamwork
-==========================
-Teamwork assignment for the ASP.NET Web Forms course at Telerik Academy.
 
-## Project Description
-Design and implement a **data-driven ASP.NET Web Forms application**. It can be a discussion forum, blog system, e-commerce site, online gaming site, social network, or any other Web application by your choice.
+##We are team Fyodor Dostoevsky:
+- [stefan.sinapov]() ( Стефан Синапов )
+- [LazarDL](https://github.com/LazarDL) ( Лазар Лазаров )
+- [anilak](https://github.com/kalinalazarova1) ( Калина Лазарова )
+- [adzhazhev](https://github.com/adzhazhev) ( Александър Джажев )
 
-The application should have **public part** (accessible without authentication), **private part** (available for registered users) and **administrative part** (available for administrators only).
+[GitHub](https://github.com/WebFormsTeamFyodorDostoevsky/ASP-NET-Web-Forms-Teamwork)
 
-## General Requirements
-Your Web application should use the following technologies, frameworks and development techniques:
-- Use **ASP.NET One** Web Forms and **Visual Studio 2013**
-- Your UI should use **server-side Web Forms** UI rendering (ASPX pages and ASCX controls)
-    - ASP.NET MVC and JavaScript UI controls are not allowed
-- Use **MS SQL Server** as database back-end
-- Use **Entity Framework** to access your database
-- Use **data-binding** technique by choice. You are free to use data-source controls (like **EntityDataSource** and **ObjectDataSource**), model binding or manual binding in the C# code behind pages.
-- Use at least **two data grids** (table-like data UI components) with **server-side paging** and **sorting**
-- Adapt the **default ASP.NET Web site template** from Visual Studio 2013
-    - Use responsive design based on **Twitter Bootstrap**
-    - You may change the standard theme and modify it to apply own web design and visual styles
-- Use a **Master page** to define the common UI for the public, private and administrative parts
-- Use **Sitemap** and navigational UI controls to implement site navigation
-- Use the standard **ASP.NET Identity System** for managing users and roles
-    - Your registered users should have are least two roles: **user** and **administrator**
-- Use the standard **ASP.NET Web Forms controls** (from **System.Web.UI**)
-    - External UI controls from Telerik / Infragistics / DevExpress / etc. are **not allowed**
-- Use **UpdatePanels** and **AJAX** where applicable to avoid full postbacks
-- Apply **error handling** and **data validation** to avoid crashes when invalid data is entered
-- Handle correctly the **special HTML characters** and tags like **<br />**
-- Use at least **two ASCX user controls** that encapsulate some functionality
-- Use at least one **file upload** form to send files at the server side (e.g. profile photos for your users)
-- Use GIT as **source control system**
+Our ASP.NET Web Forms application is a web site for free advertisements for exchange of services without the **mediation of money**.
 
-#### [Read more...](https://github.com/WebFormsTeamFyodorDostoevsky/ASP-NET-Web-Forms-Teamwork/blob/master/Documentation/Assignment.md)
+It has user registration and supports three roles: **user**, **admin** and **banned**.
+
+Each user profile can be edited and it supplies information for the user **skills**, **rating**, **comments** and **published advertisements**.
+
+In the Administration menu accessible for the users in admin role is possible to **create/edit** categories, **edit/delete/update/ban/unban** users or **make them admins**.
+
+It is also possible to **approve** advertisements or **edit** or **delete** them.
+
+The site uses **Master page** for the common layout between the pages and **sitemap** for the main menu. The application also has different
+menus for different roles of users.
+
+For the database back-end is used SQL Server and Entity Framework with code-first.
+
+We have **7 list views** with server-side paging and sorting and **2 repeaters** with paging. As a base for the application is used the Visual Studio Web Forms template. **Twitter Bootstrap** is used for the styling.
+
+For the viewing of the details of the commented barter is used **Ajax Control Toolkit CollapsiblePanelExtender**. All the entered data is validated 
+through asp validators elements and all the text field are properly escaped when visualized in the html. 
+
+We have a user defined **ASCX user control** - **Notifier** which visualizes messages to the user and another one **ImageFromUrl**, which allows the user to give url of image from the web instead of uploading.
+
+We use **file upload** in the user profiles and in the advertisements. 
+
+**Statistics information** on the home page is **cached** to avoid excess http requests. 
+
+#### [Read assignment...](https://github.com/WebFormsTeamFyodorDostoevsky/ASP-NET-Web-Forms-Teamwork/blob/master/Documentation/Assignment.md)
