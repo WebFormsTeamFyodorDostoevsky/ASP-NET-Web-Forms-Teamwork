@@ -51,31 +51,49 @@ namespace BarterSystem.WebForms.Barter
             var barterId = int.Parse(paramId);
             var uow = new BarterSystemData();
             var commentedBarter = uow.Advertisments.Find(barterId);
+            var userId = this.User.Identity.GetUserId();
 
-            if (commentedBarter.AcceptUserId == this.User.Identity.GetUserId())
+            if((commentedBarter.AcceptUserId == userId && !commentedBarter.CommentedByAcceptUser ||
+               commentedBarter.UserId == userId && !commentedBarter.CommentedByUser) && commentedBarter.Status == Status.AwaitingFeedback)
             {
-                commentedBarter.CommentedByAcceptUser = true;
+                if (commentedBarter.AcceptUserId == this.User.Identity.GetUserId())
+                {
+                    commentedBarter.CommentedByAcceptUser = true;
+                }
+                else
+                {
+                    commentedBarter.CommentedByUser = true;
+                }
+
+                if (commentedBarter.CommentedByUser && commentedBarter.CommentedByAcceptUser)
+                {
+                    commentedBarter.Status = Status.Done;
+                }
+
+                var comment = new BarterSystem.Models.Comment();
+                comment.Feedback = (Feedback)Enum.Parse(typeof(Feedback), this.FeedbackType.Text);
+                comment.Content = this.Content.Text;
+                if(commentedBarter.UserId == userId)
+                {
+                    comment.UserId = commentedBarter.AcceptUserId;
+                }
+                else
+                {
+                    comment.UserId = commentedBarter.UserId;
+                }
+
+                uow.Comments.Add(comment);
+                uow.SaveChanges();
+
+                Notifier.Success("Barter offer successfully commented");
+                Server.Transfer("~/Barter/Comment.aspx", true);
             }
             else
             {
-                commentedBarter.CommentedByUser = true;
+                Notifier.Error("Barter could not be commented");
+                Response.Redirect("~/");
             }
-
-            if (commentedBarter.CommentedByUser && commentedBarter.CommentedByAcceptUser)
-            {
-                commentedBarter.Status = Status.Done;
-            }
-
-            var comment = new BarterSystem.Models.Comment();
-            comment.Feedback = (Feedback) Enum.Parse(typeof(Feedback), this.FeedbackType.Text);
-            comment.Content = this.Content.Text;
-            comment.UserId = this.User.Identity.GetUserId();
             
-            uow.Comments.Add(comment);
-            uow.SaveChanges();
-
-            Notifier.Success("Barter offer successfully commented");
-            Server.Transfer("~/Barter/Comment.aspx", true);
         }
     }
 }

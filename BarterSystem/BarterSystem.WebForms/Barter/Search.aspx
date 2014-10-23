@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Search.aspx.cs" Inherits="BarterSystem.WebForms.Barter.Search" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h3>Here you can search and filter all the barters</h3>
+    <h3>Here you can search and filter all the barters.</h3>
     <asp:ListView ID="DisplayBarters" 
                   runat="server"
                   ItemType="BarterSystem.WebForms.Models.AdvertismentViewModel" 
@@ -23,6 +23,7 @@
                     <th runat="server">
                         <asp:LinkButton runat="server" ID="SortByUsername" CommandName="Sort" CommandArgument="Username">Username</asp:LinkButton>
                     </th>
+                    <th> </th>
                 </tr>
                 <tr runat="server" ID="itemPlaceholder">
                 </tr>
