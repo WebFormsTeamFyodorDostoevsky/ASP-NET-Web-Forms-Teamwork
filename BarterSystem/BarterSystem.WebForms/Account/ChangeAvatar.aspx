@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="Change Avatar" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="ChangeAvatar.aspx.cs" Inherits="BarterSystem.WebForms.Account.ChangeAvatar" %>
 
+<%@ Register Src="~/Controls/ImageFromUrl/ImageFromUrlSave.ascx" TagPrefix="uc1" TagName="ImageFromUrlSave" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container">
         <div class="col-md-4 col-md-offset-4">
@@ -21,11 +24,8 @@
 
                     <div class="row">
                         <p>Or give URL..</p>
-                        <asp:TextBox runat="server" ID="ImageUploadUrl" CssClass="form-control"></asp:TextBox>
-                        <asp:RegularExpressionValidator ID="RegularExpressionValidatorUrlUpload" runat="server" ControlToValidate="ImageUploadUrl"
-                            ErrorMessage="Invalid url format"
-                            ValidationExpression="(http(s)?://)?([\w-]+\.)+[\w-]+(/[\w- ;,./?%&=]*)?" ForeColor="Red"></asp:RegularExpressionValidator>
-                        <asp:Button runat="server" ID="ButtonUploadFromUrl" CssClass="btn btn-default btn-block" Text="Select" OnClick="ButtonUploadFromUrl_OnClick" />
+                        <uc1:ImageFromUrlSave runat="server" ID="ControlImageFromUrl" />
+                        <asp:Button runat="server" ID="ButtonUploadControl" CssClass="btn btn-default btn-block" Text="Select" OnClick="ButtonUploadControl_OnClick" />
                     </div>
                 </div>
             </div>

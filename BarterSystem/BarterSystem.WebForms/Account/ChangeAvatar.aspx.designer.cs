@@ -49,30 +49,21 @@ namespace BarterSystem.WebForms.Account {
         protected global::System.Web.UI.WebControls.Button ButtonUpload;
         
         /// <summary>
-        /// ImageUploadUrl control.
+        /// ControlImageFromUrl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ImageUploadUrl;
+        protected global::BarterSystem.WebForms.Controls.ImageFromUrl.ImageFromUrlSave ControlImageFromUrl;
         
         /// <summary>
-        /// RegularExpressionValidatorUrlUpload control.
+        /// ButtonUploadControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidatorUrlUpload;
-        
-        /// <summary>
-        /// ButtonUploadFromUrl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonUploadFromUrl;
+        protected global::System.Web.UI.WebControls.Button ButtonUploadControl;
     }
 }

@@ -1,7 +1,6 @@
 ﻿namespace BarterSystem.WebForms.Account
 {
     using System;
-    using System.Drawing;
     using System.IO;
     using System.Linq;
     using System.Net;
@@ -9,6 +8,7 @@
 
     using BarterSystem.Common;
     using BarterSystem.Data;
+    using BarterSystem.Models;
     using BarterSystem.WebForms.Controls.Notifier;
 
     using Microsoft.AspNet.Identity;
@@ -24,9 +24,6 @@
                 var userId = User.Identity.GetUserId();
                 var userAvatar = this.data.Users.All().Where(u => u.Id == userId).Select(u => u.AvatarUrl).First();
                 this.Avatar.ImageUrl = "~/Imgs/" + userAvatar;
-
-                // TODO: remove after extracting
-                this.ContentLength = 1024000;
             }
         }
 
@@ -42,9 +39,9 @@
                     }
                     else
                     {
-                        Stream fs = FileUploadAvatar.PostedFile.InputStream;
-                        BinaryReader br = new BinaryReader(fs);
-                        Byte[] bytesPhoto = br.ReadBytes((Int32)fs.Length);
+                        Stream fs = this.FileUploadAvatar.PostedFile.InputStream;
+                        var br = new BinaryReader(fs);
+                        var bytesPhoto = br.ReadBytes((int)fs.Length);
                         string base64String = Convert.ToBase64String(bytesPhoto, 0, bytesPhoto.Length);
                         this.Avatar.ImageUrl = "data:image/png;base64," + base64String;
                         string fileName = this.FileUploadAvatar.PostedFile.FileName;
@@ -52,19 +49,7 @@
                         var newName = Guid.NewGuid() + fileExtension;
                         this.FileUploadAvatar.SaveAs(Server.MapPath(GlobalConstants.ImagesPath + newName));
 
-                        var data = new BarterSystemData();
-                        var userId = User.Identity.GetUserId();
-                        var user = data.Users.Find(userId);
-                        if (user.AvatarUrl != GlobalConstants.DefaultUserAvatar)
-                        {
-                            var oldAvatarPath = Server.MapPath(GlobalConstants.ImagesPath + user.AvatarUrl);
-                            File.Delete(oldAvatarPath);
-                        }
-
-                        user.AvatarUrl = newName;
-
-                        data.Users.Update(user);
-                        data.SaveChanges();
+                        this.SaveAvatarToUser(newName);
                         Notifier.Success("Image updated successfully");
                     }
                 }
@@ -75,17 +60,15 @@
             }
         }
 
-        protected void ButtonUploadFromUrl_OnClick(object sender, EventArgs e)
+        protected void ButtonUploadControl_OnClick(object sender, EventArgs e)
         {
-            var imageUrl = this.ImageUploadUrl.Text;
-
             var imageName = Guid.NewGuid().ToString();
             var filePath = Server.MapPath(GlobalConstants.ImagesPath + imageName);
             string extension;
 
             try
             {
-                extension = this.DownloadRemoteImageFile(imageUrl, filePath);
+                extension = this.ControlImageFromUrl.DownloadRemoteImageFile(filePath);
             }
             catch (Exception error)
             {
@@ -97,60 +80,29 @@
 
             this.Avatar.ImageUrl = GlobalConstants.ImagesPath + imageName;
 
+            this.SaveAvatarToUser(imageName);
+            Notifier.Success("Image updated successfully");
+        }
+
+        private void SaveAvatarToUser(string imageName)
+        {
             var userId = this.User.Identity.GetUserId();
             var user = this.data.Users.Find(userId);
-            if (user.AvatarUrl != GlobalConstants.DefaultUserAvatar)
-            {
-                var oldAvatarPath = Server.MapPath(GlobalConstants.ImagesPath + user.AvatarUrl);
-                File.Delete(oldAvatarPath);
-            }
+
+            this.RemoveOldAvatar(user);
 
             user.AvatarUrl = imageName;
-
             this.data.Users.Update(user);
             this.data.SaveChanges();
-
-            Notifier.Success("Image saved");
         }
 
-        private string DownloadRemoteImageFile(string uri, string fileName)
+        private void RemoveOldAvatar(User user)
         {
-            var request = (HttpWebRequest)WebRequest.Create(uri);
-            var response = (HttpWebResponse)request.GetResponse();
-
-            // Check that the remote file was found. The ContentType
-            // check is performed since a request for a non-existent
-            // image file might be redirected to a 404-page, which would
-            // yield the StatusCode "OK", even though the image was not
-            // found.
-            if ((response.StatusCode == HttpStatusCode.OK || response.StatusCode == HttpStatusCode.Moved
-                 || response.StatusCode == HttpStatusCode.Redirect)
-                && response.ContentType.StartsWith("image", StringComparison.OrdinalIgnoreCase))
+            if (user.AvatarUrl != GlobalConstants.DefaultUserAvatar)
             {
-                // if the remote file was found, download it
-                var extension = response.ContentType.Substring(response.ContentType.LastIndexOf('/') + 1);
-                fileName = fileName + '.' + extension;
-                using (Stream inputStream = response.GetResponseStream())
-                using (Stream outputStream = File.OpenWrite(fileName))
-                {
-                    var buffer = new byte[4096];
-                    int bytesRead;
-                    do
-                    {
-                        bytesRead = inputStream.Read(buffer, 0, buffer.Length);
-                        outputStream.Write(buffer, 0, bytesRead);
-                    }
-                    while (bytesRead != 0);
-
-                    return extension;
-                }
-            }
-            else
-            {
-                throw new Exception("URL doesn't contain image file");
+                var oldAvatarPath = this.Server.MapPath(GlobalConstants.ImagesPath + user.AvatarUrl);
+                File.Delete(oldAvatarPath);
             }
         }
-
-        public decimal ContentLength { get; set; }
     }
 }
