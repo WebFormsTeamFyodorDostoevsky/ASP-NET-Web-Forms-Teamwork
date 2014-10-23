@@ -1,7 +1,34 @@
 ﻿<%@ Page Title="Comment Barter" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="CommentForm.aspx.cs" Inherits="BarterSystem.WebForms.Barter.CommentForm" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %>: <asp:Literal runat="server" ID="BarterTitle"/> - <asp:Literal runat="server" ID="BarterAuthor"/></h2>
-    <asp:Image runat="server" ID="Photo" AlternateText="Barter photo" Width="140"/>
+    
+    <div>
+    <ajaxToolkit:CollapsiblePanelExtender   
+            ID="CollapsiblePanelExtender1"  
+            runat="server"  
+            TargetControlID="Panel2"  
+            ExpandControlID="Panel1"  
+            CollapseControlID="Panel1"  
+            TextLabelID="Label1"  
+            ExpandedText="Hide Details"  
+            CollapsedText="Show Details" Collapsed="true"
+        >  
+        </ajaxToolkit:CollapsiblePanelExtender>
+         
+        <asp:Panel   
+            ID="Panel1"   
+            runat="server"  
+            Width="1000">  
+            <asp:Label runat="server" CssClass="btn btn-primary btn-xs" ID="Label1" AssociatedControlID="Panel1"></asp:Label>   
+        </asp:Panel>  
+        <asp:Panel   
+            ID="Panel2"   
+            runat="server"  
+            Width="1000">
+            <asp:Image runat="server" ID="Photo" AlternateText="Barter photo" Width="140"/>
+            <asp:Literal runat="server" ID="barterContent" Mode="Encode"></asp:Literal>
+        </asp:Panel>
+        </div>
     <div class="form-horizontal">
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="FeedbackType" CssClass="col-md-2 control-label">Type</asp:Label>
