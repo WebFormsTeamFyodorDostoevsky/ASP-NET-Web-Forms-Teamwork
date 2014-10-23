@@ -11,6 +11,7 @@ using BarterSystem.WebForms.Models;
 using BarterSystem.Data;
 
 using BarterSystem.WebForms.Controls.Notifier;
+using BarterSystem.Models.Enums;
 namespace BarterSystem.WebForms.Administration
 {
     public partial class Barters : System.Web.UI.Page
@@ -81,7 +82,8 @@ namespace BarterSystem.WebForms.Administration
         //     string sortByExpression
         public IQueryable<BarterSystem.WebForms.Models.BarterViewModel> AdminBarterVL_GetData()
         {
-            return data.Advertisments.All().Select(x => new BarterViewModel()
+            return data.Advertisments.All().Where(x => x.Status != Status.Deleted)
+                .Select(x => new BarterViewModel()
             {
                 Id = x.Id,
                 Content = x.Content,
@@ -130,6 +132,22 @@ namespace BarterSystem.WebForms.Administration
         protected void CategoryList_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
         {
 
+        }
+
+        // The id parameter name should match the DataKeyNames value set on the control
+        public void AdminBarterVL_DeleteItem(int Id)
+        {
+            var itemData = data.Advertisments.Find(Id);
+            if (itemData != null)
+            {
+                itemData.Status = BarterSystem.Models.Enums.Status.Deleted;
+                data.SaveChanges();
+                Notifier.Success("Barter deleted");
+            }
+            else
+            {
+                Notifier.Warning("Barter deletion failed");
+            }
         }
 
 
