@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h3>
-        <asp:Label runat="server" ID="Name" />
+        <asp:Label runat="server" ID="NameHeader" />
     </h3>
     <div class="container">
         <ul class="col-md-3 list-group text-center">
@@ -11,6 +11,10 @@
             </li>
             <li class="list-group-item">
                 <i class="glyphicon glyphicon-user pull-left"></i>
+                <asp:Label runat="server" ID="Name" />
+            </li>
+            <li class="list-group-item">
+                <i class="glyphicon glyphicon-envelope pull-left"></i>
                 <asp:Label runat="server" ID="Username" />
             </li>
             <li class="list-group-item">

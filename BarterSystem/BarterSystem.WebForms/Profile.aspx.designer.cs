@@ -13,13 +13,13 @@ namespace BarterSystem.WebForms {
     public partial class Profile {
         
         /// <summary>
-        /// Name control.
+        /// NameHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Name;
+        protected global::System.Web.UI.WebControls.Label NameHeader;
         
         /// <summary>
         /// Avatar control.
@@ -29,6 +29,15 @@ namespace BarterSystem.WebForms {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image Avatar;
+        
+        /// <summary>
+        /// Name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Name;
         
         /// <summary>
         /// Username control.
