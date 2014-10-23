@@ -26,7 +26,7 @@
                     <asp:Label ID="ContentLabel" runat="server" Text='<%# Eval("Content") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="CategoryIdLabel" runat="server" Text='<%# Eval("CategoryId") %>' />
+                    <asp:Label ID="CategoryIdLabel" runat="server" Text='<%# Item.CategoryName%>' />
                 </td>
                 <td>
                     <asp:Label ID="StatusLabel" runat="server" Text='<%# Eval("Status") %>' />
@@ -52,6 +52,10 @@
                     <asp:TextBox ID="ContentTextBox" runat="server" Text='<%# Bind("Content") %>' />
                 </td>
                 <td>
+                    <asp:DropDownList runat="server" ID="CategoryPicker" 
+                        DataSourceID="CategoryList" DataValueField="Id"
+                         DataTextField="Name"> 
+                    </asp:DropDownList>
                     <asp:TextBox ID="CategoryIdTextBox" runat="server" Text='<%# Bind("CategoryId") %>' />
                 </td>
                 <td>
@@ -115,7 +119,7 @@
                     <asp:Label ID="ContentLabel" runat="server" Text='<%# Eval("Content") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="CategoryIdLabel" runat="server" Text='<%# Eval("CategoryId") %>' />
+                    <asp:Label ID="CategoryIdLabel" runat="server" Text='<%# Item.CategoryName%>' />
                 </td>
                 <td>
                     <asp:Label ID="StatusLabel" runat="server" Text='<%# Eval("Status") %>' />
@@ -189,6 +193,7 @@
             </tr>
         </SelectedItemTemplate>
     </asp:ListView>
+    <asp:ObjectDataSource runat="server" ID="CategoryList" OnSelecting="CategoryList_Selecting" SelectMethod="GetCategoriesWithValues" TypeName="BarterSystem.WebForms.Administration.Barters"/> 
 </asp:Content>
 
 

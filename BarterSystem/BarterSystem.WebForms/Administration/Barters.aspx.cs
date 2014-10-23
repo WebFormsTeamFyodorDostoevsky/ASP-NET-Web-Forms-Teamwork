@@ -15,6 +15,7 @@ namespace BarterSystem.WebForms.Administration
 {
     public partial class Barters : System.Web.UI.Page
     {
+
         private BarterSystemData data;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,6 +26,11 @@ namespace BarterSystem.WebForms.Administration
             data = new BarterSystemData();
         }
 
+        public IList<Category> GetCategoriesWithValues()
+        {
+            data = new BarterSystemData();
+            return data.Categories.All().ToList();
+        }
         protected void ListView1_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
 
@@ -82,8 +88,9 @@ namespace BarterSystem.WebForms.Administration
                 Status = x.Status,
                 CategoryId = x.CategoryId,
                 Title = x.Title,
-                UserName = x.User.UserName
-            });
+                UserName = x.User.UserName,
+                CategoryName = x.Category.Name
+            }).OrderBy(x => -x.Id);
         }
 
 
@@ -106,7 +113,7 @@ namespace BarterSystem.WebForms.Administration
                 CategoryId = itemData.CategoryId,
                 Title = itemData.Title,
                 UserName = itemData.User.UserName
-            }; 
+            };
             TryUpdateModel(item);
             if (ModelState.IsValid)
             {
@@ -119,6 +126,13 @@ namespace BarterSystem.WebForms.Administration
                 Notifier.Success("Item updated");
             }
         }
+
+        protected void CategoryList_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
+        {
+
+        }
+
+
 
 
 
