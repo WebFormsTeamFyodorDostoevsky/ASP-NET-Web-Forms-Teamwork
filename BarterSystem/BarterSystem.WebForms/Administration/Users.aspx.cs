@@ -8,6 +8,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using BarterSystem.WebForms.Controls.Notifier;
 namespace BarterSystem.WebForms.Administration
 {
     public partial class Users : System.Web.UI.Page
@@ -56,7 +57,7 @@ namespace BarterSystem.WebForms.Administration
                 itemData.FirstName = item.FirstName;
                 itemData.LastName = item.LastName;
                 data.SaveChanges();
-
+                Notifier.Success("user info updated");
             }
         }
 
@@ -75,6 +76,7 @@ namespace BarterSystem.WebForms.Administration
                 Roles.AddUserToRole(user.UserName, "banned");
                 data.SaveChanges();
                 DataBind();
+                Notifier.Warning("User banned");
             }
             else if (String.Equals(e.CommandName, "Admin"))
             {
@@ -89,6 +91,7 @@ namespace BarterSystem.WebForms.Administration
                 Roles.AddUserToRole(user.UserName, "admin");
                 data.SaveChanges();
                 DataBind();
+                Notifier.Success("User promoted");
             }
             else if (String.Equals(e.CommandName, "LiftBan"))
             {
@@ -99,6 +102,7 @@ namespace BarterSystem.WebForms.Administration
                 Roles.RemoveUserFromRole(user.UserName, "banned");
                 data.SaveChanges();
                 DataBind();
+                Notifier.Warning("Bann lifted");
             } 
         }
     }

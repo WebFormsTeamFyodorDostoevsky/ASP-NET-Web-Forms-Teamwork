@@ -9,6 +9,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+using BarterSystem.WebForms.Controls.Notifier;
 namespace BarterSystem.WebForms.Administration
 {
     public partial class Categories : System.Web.UI.Page
@@ -70,6 +71,7 @@ namespace BarterSystem.WebForms.Administration
             {
                 itemData.Name = item.Name;
                 data.SaveChanges();
+                Notifier.Success("Category changed");
             }
         }
 
@@ -98,6 +100,7 @@ namespace BarterSystem.WebForms.Administration
             data.Categories.Add(itemData);
             data.SaveChanges();
             CategoryLV.DataBind();
+            Notifier.Success("Category created");
         }
     }
 }
