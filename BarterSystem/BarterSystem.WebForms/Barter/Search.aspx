@@ -1,6 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Search.aspx.cs" Inherits="BarterSystem.WebForms.Barter.Search" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h3>Here you can search and filter all the barters.</h3>
+    <div class="container row">
+        <asp:TextBox ID="SearchBox" runat="server" CssClass="col-md-4 form-control">
+
+        </asp:TextBox>
+        <asp:LinkButton ID="SearchBtn" runat="server" CssClass="col-md-1 btn btn-primary" Text="Search" OnClick="SearchBtn_Click">
+
+        </asp:LinkButton>
+    </div>
+    <br />
     <asp:ListView ID="DisplayBarters" 
                   runat="server"
                   ItemType="BarterSystem.WebForms.Models.AdvertismentViewModel" 
