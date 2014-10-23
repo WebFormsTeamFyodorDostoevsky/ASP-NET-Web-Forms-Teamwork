@@ -21,10 +21,10 @@
                     <div class="row">
                         <asp:Button ID="ButtonUpload" runat="server" Text="Upload" CssClass="btn btn-default btn-block" OnClick="ButtonUpload_OnClick" />
                     </div>
-
+                    
                     <div class="row">
-                        <p>Or give URL..</p>
-                        <uc1:ImageFromUrlSave runat="server" ID="ControlImageFromUrl" />
+                        <p>Or give URL..</p>                      
+                        <uc1:ImageFromUrlSave runat="server" id="ControlImageFromUrl"/>
                         <asp:Button runat="server" ID="ButtonUploadControl" CssClass="btn btn-default btn-block" Text="Select" OnClick="ButtonUploadControl_OnClick" />
                     </div>
                 </div>

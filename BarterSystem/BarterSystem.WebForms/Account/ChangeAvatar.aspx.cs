@@ -58,6 +58,10 @@
                     Notifier.Error(exception.Message);
                 }
             }
+            else
+            {
+                Notifier.Error("Please select file first");
+            }
         }
 
         protected void ButtonUploadControl_OnClick(object sender, EventArgs e)
