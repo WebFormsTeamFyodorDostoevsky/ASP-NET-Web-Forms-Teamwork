@@ -17,22 +17,22 @@
                     <asp:Button ID="Disapprove" CssClass="btn btn-danger btn-xs" runat="server"  CommandName="Disapprove" Text="Reject" CommandArgument='<%# Eval("Id") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="UserNameLabel" runat="server" Text='<%# Eval("UserName") %>' />
+                    <asp:Label ID="UserNameLabel" runat="server" Text='<%#: Item.UserName %>' />
                 </td>
                 <td>
-                    <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
+                    <asp:Label ID="TitleLabel" runat="server" Text='<%#: Item.Title %>' />
                 </td>
                 <td>
-                    <asp:Label ID="ContentLabel" runat="server" Text='<%# Eval("Content") %>' />
+                    <asp:Label ID="ContentLabel" runat="server" Text='<%# Item.Content %>' />
                 </td>
                 <td>
-                    <asp:Label ID="CategoryIdLabel" runat="server" Text='<%# Item.CategoryName%>' />
+                    <asp:Label ID="CategoryIdLabel" runat="server" Text='<%#: Item.CategoryName %>' />
                 </td>
                 <td>
-                    <asp:Label ID="StatusLabel" runat="server" Text='<%# Eval("Status") %>' />
+                    <asp:Label ID="StatusLabel" runat="server" Text='<%#: Item.Status %>' />
                 </td>
                 <td>
-                    <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />
+                    <asp:Label ID="IdLabel" runat="server" Text='<%#: Item.Id %>' />
                 </td>
             </tr>
         </AlternatingItemTemplate>
@@ -54,9 +54,9 @@
                 <td>
                     <asp:DropDownList runat="server" ID="CategoryPicker" 
                         DataSourceID="CategoryList" DataValueField="Id"
-                         DataTextField="Name"> 
+                        DataTextField="Name" SelectedValue='<%# Bind("CategoryId") %>'> 
                     </asp:DropDownList>
-                    <asp:TextBox ID="CategoryIdTextBox" runat="server" Text='<%# Bind("CategoryId") %>' />
+                    <%--<asp:TextBox ID="CategoryIdTextBox" runat="server" Text='<%# Bind("CategoryId") %>' />--%>
                 </td>
                 <td>
                     <asp:TextBox ID="StatusTextBox" runat="server" Text='<%# Bind("Status") %>' />
@@ -110,22 +110,22 @@
                         Text="Reject" CommandArgument='<%# Eval("Id") %>' />
                 </td>
                 <td>
-                    <asp:Label ID="UserNameLabel" runat="server" Text='<%# Eval("UserName") %>' />
+                    <asp:Label ID="UserNameLabel" runat="server" Text='<%#: Item.UserName %>' />
                 </td>
                 <td>
-                    <asp:Label ID="TitleLabel" runat="server" Text='<%# Eval("Title") %>' />
+                    <asp:Label ID="TitleLabel" runat="server" Text='<%#: Item.Title %>' />
                 </td>
                 <td>
-                    <asp:Label ID="ContentLabel" runat="server" Text='<%# Eval("Content") %>' />
+                    <asp:Label ID="ContentLabel" runat="server" Text='<%# Item.Content %>' />
                 </td>
                 <td>
-                    <asp:Label ID="CategoryIdLabel" runat="server" Text='<%# Item.CategoryName%>' />
+                    <asp:Label ID="CategoryIdLabel" runat="server" Text='<%#: Item.CategoryName %>' />
                 </td>
                 <td>
-                    <asp:Label ID="StatusLabel" runat="server" Text='<%# Eval("Status") %>' />
+                    <asp:Label ID="StatusLabel" runat="server" Text='<%#: Item.Status %>' />
                 </td>
                 <td>
-                    <asp:Label ID="IdLabel" runat="server" Text='<%# Eval("Id") %>' />
+                    <asp:Label ID="IdLabel" runat="server" Text='<%#: Item.Id %>' />
                 </td>
             </tr>
         </ItemTemplate>

@@ -61,13 +61,13 @@
         </LayoutTemplate>
         <ItemTemplate>
             <tr>
-                <td><%# Item.Username %></td>
-                <td><%# Item.FirstName%></td>
-                <td><%# Item.LastName%></td>
-                <td><%# Item.Rating%></td>
+                <td><%#: Item.Username %></td>
+                <td><%#: Item.FirstName%></td>
+                <td><%#: Item.LastName%></td>
+                <td><%#: Item.Rating%></td>
                 <td>
                     <img src="/Imgs/<%# Item.AvatarUrl %>"
-                        alt="<%# Item.Username %>'s avatar"
+                        alt="<%#: Item.Username %>'s avatar"
                         class="thumbnail"
                         height="100"
                         width="100" />
