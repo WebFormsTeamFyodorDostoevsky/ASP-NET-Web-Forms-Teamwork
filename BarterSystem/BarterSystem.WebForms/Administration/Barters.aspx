@@ -23,7 +23,7 @@
                     <asp:Label ID="TitleLabel" runat="server" Text='<%#: Item.Title %>' />
                 </td>
                 <td>
-                    <asp:Label ID="ContentLabel" runat="server" Text='<%# Item.Content %>' />
+                    <asp:Label ID="ContentLabel" runat="server" Text='<%#: Item.Content %>' />
                 </td>
                 <td>
                     <asp:Label ID="CategoryIdLabel" runat="server" Text='<%#: Item.CategoryName %>' />
@@ -116,7 +116,7 @@
                     <asp:Label ID="TitleLabel" runat="server" Text='<%#: Item.Title %>' />
                 </td>
                 <td>
-                    <asp:Label ID="ContentLabel" runat="server" Text='<%# Item.Content %>' />
+                    <asp:Label ID="ContentLabel" runat="server" Text='<%#: Item.Content %>' />
                 </td>
                 <td>
                     <asp:Label ID="CategoryIdLabel" runat="server" Text='<%#: Item.CategoryName %>' />
