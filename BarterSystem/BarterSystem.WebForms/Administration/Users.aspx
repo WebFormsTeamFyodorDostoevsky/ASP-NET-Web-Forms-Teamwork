@@ -103,8 +103,8 @@
         </ItemTemplate>
         <EditItemTemplate>
             <td>
-                <asp:TextBox runat="server"
-                    Text='<%# Bind("Username") %>'
+                <asp:Label runat="server"
+                    Text='<%#: Item.Username %>'
                     ID="CategoryNameTextBox" />
 
             </td>

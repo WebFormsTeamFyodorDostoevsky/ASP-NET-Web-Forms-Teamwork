@@ -197,6 +197,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Controls\ImageFromUrl\ImageFromUrlSave.ascx" />
     <Content Include="Controls\Notifier\css\notifier.css" />
     <Content Include="Controls\Notifier\js\jquery-2.1.1.min.js" />
     <Content Include="Controls\Notifier\js\notifier.js" />
@@ -204,6 +205,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Imgs\default-avatar.jpg" />
     <Content Include="Imgs\default.jpg" />
+    <Content Include="Imgs\ngy8iHY.jpg" />
     <Content Include="packages.config" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -435,6 +437,13 @@
     </Compile>
     <Compile Include="Barter\Search.aspx.designer.cs">
       <DependentUpon>Search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ImageFromUrl\ImageFromUrlSave.ascx.cs">
+      <DependentUpon>ImageFromUrlSave.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ImageFromUrl\ImageFromUrlSave.ascx.designer.cs">
+      <DependentUpon>ImageFromUrlSave.ascx</DependentUpon>
     </Compile>
     <Compile Include="Controls\Notifier\Enums\NotificationType.cs" />
     <Compile Include="Controls\Notifier\Notification.cs" />
