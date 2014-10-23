@@ -17,7 +17,12 @@
                     <th runat="server">
                         <asp:LinkButton runat="server" ID="SortByCategory" CommandName="Sort" CommandArgument="CategoryName">Category</asp:LinkButton>
                     </th>
-                    <th runat="server">Accept Offer</th>
+                    <th runat="server">
+                        <asp:LinkButton runat="server" ID="SortByDate" CommandName="Sort" CommandArgument="CreationDate">CreationDate</asp:LinkButton>
+                    </th>
+                    <th runat="server">
+                        <asp:LinkButton runat="server" ID="SortByUsername" CommandName="Sort" CommandArgument="Username">Username</asp:LinkButton>
+                    </th>
                 </tr>
                 <tr runat="server" ID="itemPlaceholder">
                 </tr>
@@ -38,8 +43,12 @@
             <tr>
                 <td><%#: Item.Title %></td>
                 <td><%#: Item.CategoryName %></td>
+                <td><%#: Item.CreationDate %></td>
                 <td>
-                    <input type="button" class="btn btn-success" value="Accept"/>
+                    <%#: Item.Username %>
+                </td>
+                <td>
+                    <asp:Button ID="AcceptButton" Text="Accept" CssClass="btn btn-success" runat="server" CommandArgument='<%#: Item.Id %>' CommandName="Accept" OnCommand="AcceptButton_Click"/>
                 </td>
             </tr>
         </ItemTemplate>
