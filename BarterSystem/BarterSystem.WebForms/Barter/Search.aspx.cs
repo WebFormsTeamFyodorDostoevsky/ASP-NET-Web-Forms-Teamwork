@@ -32,6 +32,7 @@
         {
             var currentUserId = this.User.Identity.GetUserId();
             ads = uow.Advertisments.All().Where(a => a.Status == Status.Available && a.UserId != currentUserId).Select(AdvertismentViewModel.FromAdvertisment);
+            var test = ads.ToList();
             return ads;
         }
 
