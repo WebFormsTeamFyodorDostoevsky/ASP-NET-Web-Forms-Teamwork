@@ -7,7 +7,8 @@
         ItemType="BarterSystem.WebForms.Models.AdminUserViewModel"
         SelectMethod="AdminUserLV_GetData"
         ItemPlaceholderID="itemPlaceholder"
-        UpdateMethod="AdminUserLV_UpdateItem">
+        UpdateMethod="AdminUserLV_UpdateItem"
+        OnItemCommand="AdminUserLV_ItemCommand">
 
         <LayoutTemplate>
             <table runat="server" id="View"
@@ -75,6 +76,12 @@
                     <asp:Button ID="EditButton" runat="server"
                         CssClass="btn btn-primary btn-xs"
                         CommandName="Edit" Text="Edit" />
+                    <asp:Button ID="PromoteButtom" runat="server"
+                        CssClass="btn btn-success btn-xs" CommandName="Admin"
+                        Text="Make admin" CommandArgument='<%# Eval("Username") %>' />
+                    <asp:Button ID="BanButton" runat="server" CssClass="btn btn-danger btn-xs"
+                        CommandName="Ban"
+                        Text="Ban" CommandArgument='<%# Eval("Username") %>' />
 
                 </td>
             </tr>

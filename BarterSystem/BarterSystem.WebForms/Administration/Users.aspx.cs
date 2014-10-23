@@ -59,5 +59,35 @@ namespace BarterSystem.WebForms.Administration
 
             }
         }
+
+        protected void AdminUserLV_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            if (String.Equals(e.CommandName, "Ban"))
+            {
+                if (!Roles.RoleExists("banned"))
+                {
+                    Roles.CreateRole("banned");
+                }
+                var userName = AdminUserLV.DataKeys[e.Item.DisplayIndex]
+                    .Value.ToString();
+                var user = data.Users.All()
+                    .FirstOrDefault(x => x.UserName == userName);
+                Roles.AddUserToRole(user.UserName, "banned");
+                data.SaveChanges();
+            }
+            else if (String.Equals(e.CommandName, "Admin"))
+            {
+                if (!Roles.RoleExists("admin"))
+                {
+                    Roles.CreateRole("admin");
+                }
+                var userName = AdminUserLV.DataKeys[e.Item.DisplayIndex]
+                    .Value.ToString();
+                var user = data.Users.All()
+                    .FirstOrDefault(x => x.UserName == userName);
+                Roles.AddUserToRole(user.UserName, "admin");
+                data.SaveChanges();
+            } 
+        }
     }
 }
