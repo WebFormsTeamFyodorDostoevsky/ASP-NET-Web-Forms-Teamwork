@@ -14,19 +14,12 @@
 
     public partial class Profile : Page
     {
-        public UserViewModel Person { get; set; }
-
         public IQueryable<AdvertismentViewModel> DisplayBartersGetData()
         {
             var data = new BarterSystemData();
             var userId = this.User.Identity.GetUserId();
             var ads = data.Advertisments.All().Where(a => a.UserId == userId || a.AcceptUserId == userId).Select(AdvertismentViewModel.FromAdvertisment);
             return ads;
-        }
-
-        public IEnumerable<AdvertismentViewModel> JoinedBartersGetData()
-        {
-            throw new NotImplementedException();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -44,10 +37,10 @@
                             .Where(u => u.Id == userId)
                             .Select(UserViewModel.FromDataToModel)
                             .First();
-                this.Person = user;
                 this.Avatar.ImageUrl = GlobalConstants.ImagesPath + user.AvatarUrl;
                 this.Username.Text = user.Username;
                 this.Name.Text = string.Format("{0} {1}", user.FirstName, user.LastName);
+                this.NameHeader.Text = string.Format("{0} {1}", user.FirstName, user.LastName);
                 this.Rating.Text = user.Rating.ToString(CultureInfo.InvariantCulture);
 
                 this.Skills.DataSource = user.Skills;
