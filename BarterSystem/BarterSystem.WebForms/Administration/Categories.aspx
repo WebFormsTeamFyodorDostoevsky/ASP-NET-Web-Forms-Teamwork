@@ -55,6 +55,7 @@
                         <asp:LinkButton runat="server" ID="SortById"
                             CommandName="Sort" CommandArgument="Id">Id</asp:LinkButton>
                     </th>
+                    <th></th>
                 </tr>
                 <tr runat="server" id="itemPlaceholder">
                 </tr>

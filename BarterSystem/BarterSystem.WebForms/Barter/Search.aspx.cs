@@ -30,9 +30,24 @@
         //     string sortByExpression
         public IQueryable<BarterSystem.WebForms.Models.AdvertismentViewModel> DisplayBarters_GetData()
         {
+            string idStr = Request.QueryString["q"];
             var currentUserId = this.User.Identity.GetUserId();
-            ads = uow.Advertisments.All().Where(a => a.Status == Status.Available && a.UserId != currentUserId).Select(AdvertismentViewModel.FromAdvertisment);
-            var test = ads.ToList();
+
+            if (idStr == null)
+            {
+                ads = uow.Advertisments
+                         .All()
+                         .Where(a => a.Status == Status.Available && a.UserId != currentUserId)
+                         .Select(AdvertismentViewModel.FromAdvertisment);
+            }
+            else
+            {
+                ads = uow.Advertisments
+                         .All()
+                         .Where(a => a.Status == Status.Available && a.UserId != currentUserId && a.Title.Contains(idStr))
+                         .Select(AdvertismentViewModel.FromAdvertisment);
+            }
+
             return ads;
         }
 
@@ -47,9 +62,16 @@
                 ad.Status = Status.AwaitingFeedback;
                 ad.AcceptUserId = currentUserId;
                 uow.SaveChanges();
-            }            
+            }
 
             Response.Redirect("~/Barter/Search.aspx");
+        }
+
+        protected void SearchBtn_Click(object sender, EventArgs e)
+        {
+            var searchWord = this.SearchBox.Text;
+            var query = string.Format("?q={0}", searchWord);
+            Response.Redirect("~/Barter/Search" + query);
         }
     }
 }

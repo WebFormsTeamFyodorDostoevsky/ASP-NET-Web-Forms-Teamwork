@@ -10,6 +10,7 @@ using BarterSystem.WebForms.Barter;
 using BarterSystem.WebForms.Models;
 using BarterSystem.Data;
 
+using BarterSystem.WebForms.Controls.Notifier;
 namespace BarterSystem.WebForms.Administration
 {
     public partial class Barters : System.Web.UI.Page
@@ -35,6 +36,7 @@ namespace BarterSystem.WebForms.Administration
                    AdminBarterVL.DataKeys[e.Item.DisplayIndex]
                    .Value.ToString());
                 new BarterObjectData().Aprove(id);
+                Notifier.Success("Barter approved");
                 DataBind();
             }
             else if (String.Equals(e.CommandName, "Disapprove"))
@@ -44,6 +46,8 @@ namespace BarterSystem.WebForms.Administration
                    .Value.ToString());
                 //TODO optimize this
                 new BarterObjectData().Disaprove(id);
+
+                Notifier.Success("Barter rejected");
                 DataBind();
             }
             else if (String.Equals(e.CommandName, "Sort"))
@@ -112,6 +116,7 @@ namespace BarterSystem.WebForms.Administration
                 itemData.Title = item.Title;
                 data.SaveChanges();
                 AdminBarterVL.DataBind();
+                Notifier.Success("Item updated");
             }
         }
 
