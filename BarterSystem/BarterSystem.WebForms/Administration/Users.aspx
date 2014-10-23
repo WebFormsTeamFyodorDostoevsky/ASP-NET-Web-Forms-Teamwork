@@ -73,13 +73,28 @@
                         width="100" />
                 </td>
                 <td>
-                    <asp:Button ID="EditButton" runat="server"
-                        CssClass="btn btn-primary btn-xs"
+
+                     <asp:Button ID="LiftBan" runat="server"
+                        Visible='<%# Roles.IsUserInRole(Item.Username,"banned") %>'
+                        CssClass='btn btn-danger btn-xs'
+                        CommandName="LiftBan"
+                        Text="Lift ban" CommandArgument='<%# Eval("Username") %>' />
+                    <asp:Button
+                        Visible='<%# !Roles.IsUserInRole(Item.Username,"admin") %>'
+                        CssClass='btn btn-primary btn-xs'
+                        ID="EditButton"
+                        runat="server"
                         CommandName="Edit" Text="Edit" />
                     <asp:Button ID="PromoteButtom" runat="server"
-                        CssClass="btn btn-success btn-xs" CommandName="Admin"
+                        Visible='<%# !Roles.IsUserInRole(Item.Username,"admin") %>'
+                        CssClass='btn btn-success btn-xs'
+                        CommandName="Admin"
                         Text="Make admin" CommandArgument='<%# Eval("Username") %>' />
-                    <asp:Button ID="BanButton" runat="server" CssClass="btn btn-danger btn-xs"
+
+                    <asp:Button ID="BanButton" runat="server"
+                        Visible='<%# (!Roles.IsUserInRole(Item.Username,"admin"))
+                    &&(!Roles.IsUserInRole(Item.Username,"banned"))  %>'
+                        CssClass='btn btn-danger btn-xs'
                         CommandName="Ban"
                         Text="Ban" CommandArgument='<%# Eval("Username") %>' />
 

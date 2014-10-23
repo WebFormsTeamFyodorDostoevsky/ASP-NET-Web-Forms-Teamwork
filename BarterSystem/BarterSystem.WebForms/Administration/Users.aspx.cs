@@ -74,6 +74,7 @@ namespace BarterSystem.WebForms.Administration
                     .FirstOrDefault(x => x.UserName == userName);
                 Roles.AddUserToRole(user.UserName, "banned");
                 data.SaveChanges();
+                DataBind();
             }
             else if (String.Equals(e.CommandName, "Admin"))
             {
@@ -87,6 +88,17 @@ namespace BarterSystem.WebForms.Administration
                     .FirstOrDefault(x => x.UserName == userName);
                 Roles.AddUserToRole(user.UserName, "admin");
                 data.SaveChanges();
+                DataBind();
+            }
+            else if (String.Equals(e.CommandName, "LiftBan"))
+            {
+                var userName = AdminUserLV.DataKeys[e.Item.DisplayIndex]
+                    .Value.ToString();
+                var user = data.Users.All()
+                    .FirstOrDefault(x => x.UserName == userName);
+                Roles.RemoveUserFromRole(user.UserName, "banned");
+                data.SaveChanges();
+                DataBind();
             } 
         }
     }
