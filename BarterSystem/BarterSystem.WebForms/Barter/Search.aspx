@@ -21,6 +21,9 @@
             <table runat="server" id="View" class="table table-striped table-hover ">
                 <tr runat="server">
                     <th runat="server">
+                        <asp:LinkButton runat="server" ID="Photo">Photo</asp:LinkButton>
+                    </th>
+                    <th runat="server">
                         <asp:LinkButton runat="server" ID="SortByTitle" CommandName="Sort" CommandArgument="Title">Title</asp:LinkButton>
                     </th>
                     <th runat="server">
@@ -51,6 +54,7 @@
         </LayoutTemplate>
         <ItemTemplate>
             <tr>
+                <td><asp:Image runat="server" AlternateText="Barter photo" Width="80px" ImageUrl="<%#: Item.ImageUrl %>"/></td>
                 <td><%#: Item.Title %></td>
                 <td><%#: Item.CategoryName %></td>
                 <td><%#: Item.CreationDate %></td>
