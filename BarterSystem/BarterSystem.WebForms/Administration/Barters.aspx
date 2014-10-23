@@ -5,6 +5,7 @@
     <asp:ListView ID="AdminBarterVL" runat="server"
         DataKeyNames="Id"
         OnItemCommand="ListView1_ItemCommand"
+         DeleteMethod="AdminBarterVL_DeleteItem"
          ItemType="BarterSystem.WebForms.Models.BarterViewModel"
          SelectMethod="AdminBarterVL_GetData"
           UpdateMethod="AdminBarterVL_UpdateItem">
