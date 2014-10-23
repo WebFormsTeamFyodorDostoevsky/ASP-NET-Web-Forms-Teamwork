@@ -16,10 +16,21 @@ namespace BarterSystem.WebForms.Barter
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (this.User == null || !this.User.Identity.IsAuthenticated)
+            {
+                Server.Transfer("~/Account/Login.aspx", true);
+            }
+
+            var paramId = Request.QueryString["id"];
+            if (paramId == null)
+            {
+                Response.Redirect("~/");
+            }
+
             var itemNames = System.Enum.GetNames(typeof(BarterSystem.Models.Enums.Feedback));
             var sorted = itemNames.ToList().OrderByDescending(a => a);
             this.FeedbackType.DataSource = sorted;
-            var barterId = int.Parse(Request.QueryString["id"]);
+            var barterId = int.Parse(paramId);
             var uow = new BarterSystemData();
             var commentedBarter = uow.Advertisments.Find(barterId);
             this.BarterTitle.Text = commentedBarter.Title;
@@ -31,7 +42,13 @@ namespace BarterSystem.WebForms.Barter
 
         protected void Save_Click(object sender, EventArgs e)
         {
-            var barterId = int.Parse(Request.QueryString["id"]);
+            var paramId = Request.QueryString["id"];
+            if(paramId == null)
+            {
+                Response.Redirect("~/");
+            }
+
+            var barterId = int.Parse(paramId);
             var uow = new BarterSystemData();
             var commentedBarter = uow.Advertisments.Find(barterId);
 
