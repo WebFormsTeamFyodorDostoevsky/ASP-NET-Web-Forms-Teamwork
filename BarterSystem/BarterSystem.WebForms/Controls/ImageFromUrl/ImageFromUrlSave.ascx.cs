@@ -44,6 +44,11 @@
             throw new Exception("URL doesn't contain image file");
         }
 
+        public bool HaveUrl()
+        {
+            return !string.IsNullOrEmpty(this.ImageUploadUrl.Text);
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
         }

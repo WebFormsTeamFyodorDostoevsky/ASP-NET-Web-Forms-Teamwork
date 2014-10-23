@@ -63,6 +63,14 @@ namespace BarterSystem.WebForms.Barter
                         newAd.ImageUrl = newName;
                     }
                 }
+                else if (this.ControlImageUrl.HaveUrl())
+                {
+                    var imageName = Guid.NewGuid().ToString();
+                    var filePath = Server.MapPath(GlobalConstants.ImagesPath + imageName);
+                    var extension = this.ControlImageUrl.DownloadRemoteImageFile(filePath);
+                    imageName = imageName + '.' + extension;
+                    newAd.ImageUrl = imageName;
+                }
                 else
                 {
                     newAd.ImageUrl = GlobalConstants.DefautlBarterImg;
@@ -72,10 +80,10 @@ namespace BarterSystem.WebForms.Barter
                 uow.SaveChanges();
                 Notifier.Success("Barter offer successfully created");
                 Response.Redirect("~/Barter/Create");
-            } 
-            catch(Exception er)
+            }
+            catch (Exception er)
             {
-                if(er.Message != "Thread was being aborted.")
+                if (er.Message != "Thread was being aborted.")
                 {
                     Notifier.Error(er.Message);
                 }

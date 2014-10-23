@@ -49,6 +49,15 @@ namespace BarterSystem.WebForms.Barter {
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RevImg;
         
         /// <summary>
+        /// ControlImageUrl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::BarterSystem.WebForms.Controls.ImageFromUrl.ImageFromUrlSave ControlImageUrl;
+        
+        /// <summary>
         /// Content control.
         /// </summary>
         /// <remarks>
