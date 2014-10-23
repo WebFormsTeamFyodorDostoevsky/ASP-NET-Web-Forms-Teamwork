@@ -33,9 +33,9 @@
         </EditItemTemplate>
         <ItemTemplate>
             <tr>
-                <td><%# Item.Name %></td>
+                <td><%#: Item.Name %></td>
                 <td>
-                    <%# Item.Id %>
+                    <%#: Item.Id %>
                 </td>
                 <td>
                     <asp:Button ID="EditButton" runat="server"
@@ -71,10 +71,10 @@
             </asp:DataPager>
         </LayoutTemplate>
     </asp:ListView>
-    <div>
+    <div class='form-group'>
         <asp:Label Text="New category name " AssociatedControlID="NewCategoryName" runat="server" />
-        <asp:TextBox runat="server" ID="NewCategoryName" />
-        <asp:Button Text="Create category" runat="server" OnClick="CreateCategory_Click" />
+        <asp:TextBox runat="server" CssClass="form-control" ID="NewCategoryName" />
+        <asp:Button Text="Create category" runat="server" CssClass="btn btn-primary" OnClick="CreateCategory_Click" />
     </div>
 
 </asp:Content>

@@ -12,7 +12,7 @@
         <asp:Literal runat="server" ID="ErrorMessage" />
     </p>
     <div class="form-horizontal">
-        <h4>Create a new barter offer</h4>
+        <h4>Create a new barter offer.</h4>
         <hr />
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
         <div class="form-group">
@@ -21,6 +21,9 @@
                 <asp:TextBox runat="server" ID="TitleAd" TextMode="SingleLine" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="TitleAd"
                     CssClass="text-danger" ErrorMessage="The title field is required." />
+                <asp:RegularExpressionValidator Display="Dynamic" runat="server" ControlToValidate="TitleAd"
+                            ValidationExpression="^[\s\S]{5,50}$"
+                            CssClass="text-danger" ErrorMessage="The title length must be between 3 and 50 symbols." />
             </div>
         </div>
         <div class="form-group">
@@ -38,6 +41,10 @@
                 <asp:TextBox runat="server" ID="Content" TextMode="MultiLine" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Content"
                     CssClass="text-danger" ErrorMessage="The content field is required." />
+                <asp:RegularExpressionValidator Display="Dynamic" runat="server" ControlToValidate="Content"
+                            ValidationExpression="^[\s\S]{5,200}$"
+                            CssClass="text-danger" ErrorMessage="The title length must be between 5 and 200 symbols." />
+                
             </div>
         </div>
         <div class="form-group">

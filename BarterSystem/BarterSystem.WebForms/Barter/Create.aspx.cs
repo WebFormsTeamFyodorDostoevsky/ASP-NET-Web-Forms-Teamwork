@@ -71,7 +71,7 @@ namespace BarterSystem.WebForms.Barter
                 uow.Advertisments.Add(newAd);
                 uow.SaveChanges();
                 Notifier.Success("Barter offer successfully created");
-                Response.Redirect("~/Barter/Create.aspx");
+                Response.Redirect("~/Barter/Create");
             } 
             catch(Exception er)
             {

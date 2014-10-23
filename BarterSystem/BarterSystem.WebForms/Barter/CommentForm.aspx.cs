@@ -35,7 +35,7 @@ namespace BarterSystem.WebForms.Barter
                 var barterId = int.Parse(paramId);
                 var uow = new BarterSystemData();
                 var commentedBarter = uow.Advertisments.Find(barterId);
-                this.BarterTitle.Text = commentedBarter.Title;
+                this.BarterTitle.Text = Server.HtmlEncode(commentedBarter.Title);
                 this.BarterAuthor.Text = commentedBarter.User.UserName;
                 this.Photo.ImageUrl = GlobalConstants.ImagesPath + commentedBarter.ImageUrl;
                 this.barterContent.Text = "Content: " + commentedBarter.Content;
@@ -101,7 +101,7 @@ namespace BarterSystem.WebForms.Barter
                 uow.SaveChanges();
 
                 Notifier.Success("Barter offer successfully commented");
-                Server.Transfer("~/Barter/Comment.aspx", true);
+                Response.Redirect("~/Barter/Comment");
             }
             else
             {

@@ -11,10 +11,12 @@ using BarterSystem.WebForms.Models;
 using BarterSystem.Data;
 
 using BarterSystem.WebForms.Controls.Notifier;
+using BarterSystem.Models.Enums;
 namespace BarterSystem.WebForms.Administration
 {
     public partial class Barters : System.Web.UI.Page
     {
+
         private BarterSystemData data;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,6 +27,11 @@ namespace BarterSystem.WebForms.Administration
             data = new BarterSystemData();
         }
 
+        public IList<Category> GetCategoriesWithValues()
+        {
+            data = new BarterSystemData();
+            return data.Categories.All().ToList();
+        }
         protected void ListView1_ItemCommand(object sender, ListViewCommandEventArgs e)
         {
 
@@ -75,15 +82,17 @@ namespace BarterSystem.WebForms.Administration
         //     string sortByExpression
         public IQueryable<BarterSystem.WebForms.Models.BarterViewModel> AdminBarterVL_GetData()
         {
-            return data.Advertisments.All().Select(x => new BarterViewModel()
+            return data.Advertisments.All().Where(x => x.Status != Status.Deleted)
+                .Select(x => new BarterViewModel()
             {
                 Id = x.Id,
                 Content = x.Content,
                 Status = x.Status,
                 CategoryId = x.CategoryId,
                 Title = x.Title,
-                UserName = x.User.UserName
-            });
+                UserName = x.User.UserName,
+                CategoryName = x.Category.Name
+            }).OrderBy(x => -x.Id);
         }
 
 
@@ -106,7 +115,7 @@ namespace BarterSystem.WebForms.Administration
                 CategoryId = itemData.CategoryId,
                 Title = itemData.Title,
                 UserName = itemData.User.UserName
-            }; 
+            };
             TryUpdateModel(item);
             if (ModelState.IsValid)
             {
@@ -119,6 +128,29 @@ namespace BarterSystem.WebForms.Administration
                 Notifier.Success("Item updated");
             }
         }
+
+        protected void CategoryList_Selecting(object sender, ObjectDataSourceSelectingEventArgs e)
+        {
+
+        }
+
+        // The id parameter name should match the DataKeyNames value set on the control
+        public void AdminBarterVL_DeleteItem(int Id)
+        {
+            var itemData = data.Advertisments.Find(Id);
+            if (itemData != null)
+            {
+                itemData.Status = BarterSystem.Models.Enums.Status.Deleted;
+                data.SaveChanges();
+                Notifier.Success("Barter deleted");
+            }
+            else
+            {
+                Notifier.Warning("Barter deletion failed");
+            }
+        }
+
+
 
 
 
