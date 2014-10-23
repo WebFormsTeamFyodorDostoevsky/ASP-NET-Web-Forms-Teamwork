@@ -6,6 +6,9 @@
     CodeBehind="Create.aspx.cs"
     Inherits="BarterSystem.WebForms.Barter.Create" %>
 
+<%@ Register Src="~/Controls/ImageFromUrl/ImageFromUrlSave.ascx" TagPrefix="uc1" TagName="ImageFromUrlSave" %>
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %>.</h2>
     <p class="text-danger">
@@ -28,11 +31,17 @@
         </div>
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="FileUploadImage" CssClass="col-md-2 control-label">Image:</asp:Label>            
-            <div class="col-md-10">
+            <div class="col-md-4">
                 <asp:FileUpload runat="server" ID="FileUploadImage" CssClass="form-control" />
                 <asp:RegularExpressionValidator ID="RevImg" runat="server" ControlToValidate="FileUploadImage"
                     ErrorMessage="Invalid File!(only  .gif, .jpg, .jpeg Files are supported)"
                     ValidationExpression="^.+(.jpg|.JPG|.gif|.GIF|.jpeg|JPEG)$" ForeColor="Red"></asp:RegularExpressionValidator>
+            </div>
+        </div>
+         <div class="form-group">
+            <asp:Label runat="server" AssociatedControlID="ControlImageUrl" CssClass="col-md-2 control-label">Or image url:</asp:Label>            
+            <div class="col-md-4">
+                <uc1:ImageFromUrlSave runat="server" ID="ControlImageUrl" />            
             </div>
         </div>
         <div class="form-group">

@@ -146,7 +146,7 @@
 
                 data.SaveChanges();
                 Notifier.Success("Account successfully updated");
-                Server.Transfer("~/Account/Manage.aspx", false);
+                Response.Redirect("~/Account/Manage.aspx", true);
             }
             catch (Exception err)
             {
