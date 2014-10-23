@@ -86,6 +86,17 @@ namespace BarterSystem.WebForms.Barter
                     comment.UserId = commentedBarter.UserId;
                 }
 
+                var user = uow.Users.Find(comment.UserId);
+                if (comment.Feedback == Feedback.Positive)
+                {
+                    user.Rating++;
+                }
+                else if (comment.Feedback == Feedback.Negative)
+                {
+                    user.Rating--;
+                }
+
+                uow.Users.Update(user);
                 uow.Comments.Add(comment);
                 uow.SaveChanges();
 
