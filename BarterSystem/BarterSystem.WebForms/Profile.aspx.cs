@@ -20,7 +20,7 @@
         {
             var data = new BarterSystemData();
             var userId = this.User.Identity.GetUserId();
-            var ads = data.Advertisments.All().Where(a => a.UserId == userId).Select(AdvertismentViewModel.FromAdvertisment);
+            var ads = data.Advertisments.All().Where(a => a.UserId == userId || a.AcceptUserId == userId).Select(AdvertismentViewModel.FromAdvertisment);
             return ads;
         }
 
