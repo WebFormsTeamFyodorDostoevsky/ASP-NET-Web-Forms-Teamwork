@@ -3,9 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h3>All offered barters</h3>
     <asp:ListView ID="AdminBarterVL" runat="server"
-        DataSourceID="BarterODS"
         DataKeyNames="Id"
-        OnItemCommand="ListView1_ItemCommand">
+        OnItemCommand="ListView1_ItemCommand"
+         ItemType="BarterSystem.WebForms.Models.BarterViewModel"
+         SelectMethod="AdminBarterVL_GetData"
+          UpdateMethod="AdminBarterVL_UpdateItem">
         <AlternatingItemTemplate>
             <tr>
                 <td>
@@ -41,7 +43,7 @@
                     <asp:Button ID="CancelButton"  CssClass="btn btn-primary btn-xs" runat="server" CommandName="Cancel" Text="Cancel" />
                 </td>
                 <td>
-                    <asp:TextBox ID="UserNameTextBox" runat="server" Text='<%# Bind("UserName") %>' />
+                    <asp:Label ID="UserNameTextBox" runat="server" Text='<%# Bind("UserName") %>' />
                 </td>
                 <td>
                     <asp:TextBox ID="TitleTextBox" runat="server" Text='<%# Bind("Title") %>' />
@@ -56,7 +58,7 @@
                     <asp:TextBox ID="StatusTextBox" runat="server" Text='<%# Bind("Status") %>' />
                 </td>
                 <td>
-                    <asp:TextBox ID="IdTextBox" runat="server" Text='<%# Bind("Id") %>' />
+                    <asp:Label ID="IdTextBox" runat="server" Text='<%# Bind("Id") %>' />
                 </td>
             </tr>
         </EditItemTemplate>
@@ -131,13 +133,13 @@
                             <tr runat="server" style="">
                                 <th runat="server"></th>
                                 <th runat="server"><asp:LinkButton ID="SortByName" runat="server"
-                                     CommandArgument="Name" CommandName="Sort" Text="User name" /></th>
+                                     CommandArgument="UserName" CommandName="Sort" Text="User name" /></th>
                                 <th runat="server"><asp:LinkButton ID="SortByTitle" runat="server"
                                      CommandArgument="Title" CommandName="Sort" Text="Title" /></th>
                                 <th runat="server"><asp:LinkButton ID="SortByContent" runat="server"
                                      CommandArgument="Content" CommandName="Content" Text="Content" /></th>
                                 <th runat="server"><asp:LinkButton ID="SortByCategory" runat="server"
-                                     CommandArgument="Category" CommandName="Sort" Text="Categor" /></th>
+                                     CommandArgument="CategoryID" CommandName="Sort" Text="Categor" /></th>
                                 <th runat="server"><asp:LinkButton ID="SortByStatus" runat="server"
                                      CommandArgument="Status" CommandName="Sort" Text="Status" /></th>
                                 <th runat="server"><asp:LinkButton ID="SortById" runat="server"
@@ -187,21 +189,6 @@
             </tr>
         </SelectedItemTemplate>
     </asp:ListView>
-    <asp:ObjectDataSource ID="BarterODS" runat="server"
-        DataObjectTypeName="BarterSystem.WebForms.Models.BarterViewModel"
-        InsertMethod="InsertObject" SelectMethod="GetBarters"
-        TypeName="BarterSystem.WebForms.Barter.BarterObjectData"
-        UpdateMethod="UpdateObject" DeleteMethod="DeleteObject"
-        ConflictDetection="CompareAllValues"
-        SortParameterName="OrderBy"
-        MaximumRowsParameterName="GetCount"
-        StartRowIndexParameterName="StartIndex">
-        <SelectParameters>
-            <asp:ControlParameter ControlID="AdminBarterVL" DefaultValue="Id" Name="OrderBy" PropertyName="SelectedValue" Type="String" />
-            <asp:Parameter DefaultValue="10" Name="ObjectsPerPage" Type="Int32" />
-            <asp:ControlParameter ControlID="AdminBarterVL" DefaultValue="10" Name="StartIndex" PropertyName="SelectedValue" Type="Int32" />
-        </SelectParameters>
-    </asp:ObjectDataSource>
 </asp:Content>
 
 

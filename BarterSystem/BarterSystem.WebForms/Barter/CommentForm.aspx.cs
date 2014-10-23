@@ -25,6 +25,7 @@ namespace BarterSystem.WebForms.Barter
             this.BarterTitle.Text = commentedBarter.Title;
             this.BarterAuthor.Text = commentedBarter.User.UserName;
             this.Photo.ImageUrl = GlobalConstants.ImagesPath + commentedBarter.ImageUrl;
+            this.barterContent.Text = "Content: " + commentedBarter.Content;
             Page.DataBind();
         }
 

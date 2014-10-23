@@ -44,13 +44,13 @@
                         <asp:ListView runat="server"
                             ID="Comments" ItemType="BarterSystem.WebForms.Models.CommentViewModel">
                             <ItemTemplate>
-                                <li class="list-group-item" runat="server">
-                                    <div runat="server" class="col-md-8">
+                                <li class="list-group-item col-md-12" runat="server">
+                                    <p class="col-md-10">
                                         <%# Item.Content %>
-                                    </div>
-                                    <div runat="server" class="col-md-4">
+                                    </p>
+                                    <span id="LabelFeedback" class="label label-primary pull-right">
                                         <%# Item.Feedback %>
-                                    </div>
+                                    </span>
                                 </li>
                             </ItemTemplate>
                             <EmptyDataTemplate>
@@ -104,7 +104,9 @@
                                 <tr>
                                     <td><%#: Item.Title %></td>
                                     <td><%#: Item.CategoryName %></td>
-                                    <td><%#: Item.Status %></td>
+                                    <td>
+                                        <span class="label label-success"><%#: Item.Status %></span>
+                                    </td>
                                 </tr>
                             </ItemTemplate>
                             <EmptyDataTemplate>
