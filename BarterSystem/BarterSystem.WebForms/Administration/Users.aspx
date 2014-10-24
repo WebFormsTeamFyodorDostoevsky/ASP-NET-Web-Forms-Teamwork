@@ -74,7 +74,7 @@
                 </td>
                 <td>
 
-                     <asp:Button ID="LiftBan" runat="server"
+                    <asp:Button ID="LiftBan" runat="server"
                         Visible='<%# Roles.IsUserInRole(Item.Username,"banned") %>'
                         CssClass='btn btn-danger btn-xs'
                         CommandName="LiftBan"
@@ -106,17 +106,29 @@
                 <asp:Label runat="server"
                     Text='<%#: Item.Username %>'
                     ID="CategoryNameTextBox" />
-
             </td>
             <td>
                 <asp:TextBox runat="server"
                     Text='<%# Bind("FirstName") %>'
                     ID="FirstNameTextBox" />
+                <asp:RequiredFieldValidator runat="server" ControlToValidate="FirstNameTextBox"
+                    CssClass="validation-warrning" ErrorMessage="*" />
+                <asp:RegularExpressionValidator Display="Dynamic" runat="server"
+                    ControlToValidate="FirstNameTextBox"
+                    ValidationExpression="^[\s\S]{3,30}$"
+                    CssClass="validation-warrning" ErrorMessage="*" />
             </td>
             <td>
                 <asp:TextBox runat="server"
                     Text='<%# Bind("LastName") %>'
                     ID="LastNameTextBox" />
+                <asp:RequiredFieldValidator runat="server"
+                    ControlToValidate="LastNameTextBox"
+                    CssClass="validation-warrning" ErrorMessage="*" />
+                <asp:RegularExpressionValidator Display="Dynamic" runat="server"
+                    ControlToValidate="LastNameTextBox"
+                    ValidationExpression="^[\s\S]{3,30}$"
+                    CssClass="validation-warrning" ErrorMessage="*" />
             </td>
             <td>
                 <asp:Label Text='<%# Eval("Rating") %>' runat="server" />
