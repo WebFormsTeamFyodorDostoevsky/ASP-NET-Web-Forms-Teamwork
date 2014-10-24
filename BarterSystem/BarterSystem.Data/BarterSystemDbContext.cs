@@ -8,7 +8,7 @@
     public class BarterSystemDbContext : IdentityDbContext<User>
     {
         public BarterSystemDbContext()
-            : base("CloudConnection", throwIfV1Schema: false)
+            : base("DefaultConnection", throwIfV1Schema: false)
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<BarterSystemDbContext, Configuration>());
         }

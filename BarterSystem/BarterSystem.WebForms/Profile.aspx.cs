@@ -51,10 +51,10 @@
             var userId = this.User.Identity.GetUserId();
             this.UserModel = data.Users.All().Where(u => u.Id == userId).Select(UserViewModel.FromDataToModel).First();
             this.Avatar.ImageUrl = GlobalConstants.ImagesPath + this.UserModel.AvatarUrl;
-            this.Username.Text = this.UserModel.Username;
-            this.Name.Text = string.Format("{0} {1}", this.UserModel.FirstName, this.UserModel.LastName);
-            this.NameHeader.Text = string.Format("{0} {1}", this.UserModel.FirstName, this.UserModel.LastName);
-            this.Rating.Text = this.UserModel.Rating.ToString(CultureInfo.InvariantCulture);
+            this.Username.Text = Server.HtmlEncode(this.UserModel.Username);
+            this.Name.Text = Server.HtmlEncode(string.Format("{0} {1}", this.UserModel.FirstName, this.UserModel.LastName));
+            this.NameHeader.Text = Server.HtmlEncode(string.Format("{0} {1}", this.UserModel.FirstName, this.UserModel.LastName));
+            this.Rating.Text = Server.HtmlEncode(this.UserModel.Rating.ToString(CultureInfo.InvariantCulture));
 
             this.Skills.DataSource = this.UserModel.Skills;
             this.Skills.DataBind();

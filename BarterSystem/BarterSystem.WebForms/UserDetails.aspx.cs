@@ -34,10 +34,10 @@
                     else
                     {
                         this.Avatar.ImageUrl = GlobalConstants.ImagesPath + user.AvatarUrl;
-                        this.Username.Text = user.Username;
-                        this.Name.Text = string.Format("{0} {1}", user.FirstName, user.LastName);
-                        this.NameHeader.Text = string.Format("{0} {1}", user.FirstName, user.LastName);
-                        this.Rating.Text = user.Rating.ToString(CultureInfo.InvariantCulture);
+                        this.Username.Text = Server.HtmlEncode(user.Username);
+                        this.Name.Text = Server.HtmlEncode(string.Format("{0} {1}", user.FirstName, user.LastName));
+                        this.NameHeader.Text = Server.HtmlEncode(string.Format("{0} {1}", user.FirstName, user.LastName));
+                        this.Rating.Text = Server.HtmlEncode(user.Rating.ToString(CultureInfo.InvariantCulture));
 
                         this.Skills.DataSource = user.Skills;
                         this.Skills.DataBind();

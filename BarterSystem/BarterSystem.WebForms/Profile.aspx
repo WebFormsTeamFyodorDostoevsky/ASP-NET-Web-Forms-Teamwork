@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h3>
-        <asp:Label runat="server" ID="NameHeader" />
+        <asp:Label runat="server" ID="NameHeader" Mode="Encode" />
     </h3>
     <div class="container">
         <ul class="col-md-3 list-group text-center">
@@ -11,16 +11,16 @@
             </li>
             <li class="list-group-item">
                 <i class="glyphicon glyphicon-user pull-left"></i>
-                <asp:Label runat="server" ID="Name" />
+                <asp:Label runat="server" ID="Name" Mode="Encode" />
             </li>
             <li class="list-group-item">
                 <i class="glyphicon glyphicon-envelope pull-left"></i>
-                <asp:Label runat="server" ID="Username" />
+                <asp:Label runat="server" ID="Username" Mode="Encode" />
             </li>
             <li class="list-group-item">
                 <i class="glyphicon glyphicon-star pull-left"></i>
                 Rating:
-                <asp:Label runat="server" ID="Rating" />
+                <asp:Label runat="server" ID="Rating" Mode="Encode"/>
             </li>
             <li class="list-group-item">
                 <i class="glyphicon glyphicon-list pull-left"></i>
@@ -30,7 +30,7 @@
                         <ul class="list-group">
                     </HeaderTemplate>
                     <ItemTemplate>
-                        <li class="list-group-item list-group-item-success"><%# Container.DataItem %></li>
+                        <li class="list-group-item list-group-item-success"><%#: Container.DataItem %></li>
                     </ItemTemplate>
                     <FooterTemplate>
                         </ul>
@@ -58,10 +58,10 @@
                             <ItemTemplate>
                                 <li class="list-group-item col-md-12" runat="server">
                                     <p class="col-md-10">
-                                        <%# Item.Content %>
+                                        <%#: Item.Content %>
                                     </p>
                                     <span id="LabelFeedback" class="label label-primary pull-right">
-                                        <%# Item.Feedback %>
+                                        <%#: Item.Feedback %>
                                     </span>
                                 </li>
                             </ItemTemplate>
