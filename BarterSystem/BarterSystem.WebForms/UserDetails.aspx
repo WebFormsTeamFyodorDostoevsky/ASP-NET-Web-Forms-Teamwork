@@ -16,16 +16,16 @@
                     </li>
                     <li class="list-group-item">
                         <i class="glyphicon glyphicon-user pull-left"></i>
-                        <asp:Label runat="server" ID="Name" />
+                        <asp:Label runat="server" ID="Name" Mode="Encode" />
                     </li>
                     <li class="list-group-item">
                         <i class="glyphicon glyphicon-envelope pull-left"></i>
-                        <asp:Label runat="server" ID="Username" />
+                        <asp:Label runat="server" ID="Username" Mode="Encode" />
                     </li>
                     <li class="list-group-item">
                         <i class="glyphicon glyphicon-star pull-left"></i>
                         Rating:
-                <asp:Label runat="server" ID="Rating" />
+                <asp:Label runat="server" ID="Rating" Mode="Encode" />
                     </li>
 
                 </ul>
@@ -43,7 +43,7 @@
                                 </HeaderTemplate>
                                 <ItemTemplate>
                                     <li class="list-group-item">
-                                        <strong><%# Container.DataItem %></strong>
+                                        <strong><%#: Container.DataItem %></strong>
                                     </li>
                                 </ItemTemplate>
                                 <FooterTemplate>
@@ -64,10 +64,10 @@
                                 <ItemTemplate>
                                     <li class="list-group-item col-md-12" runat="server">
                                         <p class="col-md-10">
-                                            <%# Item.Content %>
+                                            <%#: Item.Content %>
                                         </p>
                                         <span id="LabelFeedback" class="label label-primary pull-right">
-                                            <%# Item.Feedback %>
+                                            <%#: Item.Feedback %>
                                         </span>
                                     </li>
                                 </ItemTemplate>
