@@ -14,8 +14,7 @@
             CollapsedText="Show Details" Collapsed="true"
         >  
         </ajaxToolkit:CollapsiblePanelExtender>
-         
-        <asp:Panel   
+        <asp:Panel  
             ID="Panel1"   
             runat="server"  
             Width="1000">  

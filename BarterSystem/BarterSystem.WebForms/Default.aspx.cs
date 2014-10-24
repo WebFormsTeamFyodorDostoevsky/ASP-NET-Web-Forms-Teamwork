@@ -45,7 +45,6 @@ namespace BarterSystem.WebForms
                 Cache.Insert("bartersCount", bartersCount, null, DateTime.Now.AddSeconds(50), TimeSpan.Zero);
                 this.TotalBarters.Text = "Offered barters: " + bartersCount;
             }
-            this.TotalBarters.Text = "Offered Barters: " + uow.Advertisments.All().Count();
         }
     }
 }
